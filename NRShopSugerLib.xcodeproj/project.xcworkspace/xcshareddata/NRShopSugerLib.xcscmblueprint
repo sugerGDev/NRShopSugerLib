@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "7721A20E7581447A0390209BF49BDB78E529B7D7",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "7721A20E7581447A0390209BF49BDB78E529B7D7" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "7721A20E7581447A0390209BF49BDB78E529B7D7" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "F723262B-4DAA-4079-A5C9-F5DF0D8E0591",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "7721A20E7581447A0390209BF49BDB78E529B7D7" : "NRShopSugerLib\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "NRShopSugerLib",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "NRShopSugerLib.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/code.taobao.org\/svn\/NRShop",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7721A20E7581447A0390209BF49BDB78E529B7D7"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/sugerGDev\/NRShopSugerLib.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7721A20E7581447A0390209BF49BDB78E529B7D7"
+    }
+  ]
+}
