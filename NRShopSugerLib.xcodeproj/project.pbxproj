@@ -14,6 +14,7 @@
 		91471AA61D634A7D006067C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91471AA51D634A7D006067C8 /* Assets.xcassets */; };
 		91471AA91D634A7D006067C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91471AA71D634A7D006067C8 /* LaunchScreen.storyboard */; };
 		91471AB11D634AE3006067C8 /* NRShopSugerLib.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 91471AB01D634AE3006067C8 /* NRShopSugerLib.podspec */; };
+		91471AB81D634FE0006067C8 /* NRShopSugerLib.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91471AB71D634FE0006067C8 /* NRShopSugerLib.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,8 @@
 		91471AA81D634A7D006067C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		91471AAA1D634A7D006067C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		91471AB01D634AE3006067C8 /* NRShopSugerLib.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NRShopSugerLib.podspec; sourceTree = "<group>"; };
+		91471AB61D634F86006067C8 /* NRShopSugerLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRShopSugerLib.h; sourceTree = "<group>"; };
+		91471AB71D634FE0006067C8 /* NRShopSugerLib.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NRShopSugerLib.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				91471AB51D634B49006067C8 /* Resources */,
+				91471AB61D634F86006067C8 /* NRShopSugerLib.h */,
 			);
 			path = MyObject;
 			sourceTree = "<group>";
@@ -94,6 +98,7 @@
 		91471AB51D634B49006067C8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				91471AB71D634FE0006067C8 /* NRShopSugerLib.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -159,6 +164,7 @@
 				91471AB11D634AE3006067C8 /* NRShopSugerLib.podspec in Resources */,
 				91471AA61D634A7D006067C8 /* Assets.xcassets in Resources */,
 				91471AA41D634A7D006067C8 /* Main.storyboard in Resources */,
+				91471AB81D634FE0006067C8 /* NRShopSugerLib.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
