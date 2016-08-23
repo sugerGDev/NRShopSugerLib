@@ -29,16 +29,6 @@
  */
 @property (nonatomic, strong) NSArray * imageUrls;
 
-/**
- *  图片名称数组
- */
-@property (nonatomic, strong) NSArray * imageNames;
-
-/**
- *  占位图名称
- */
-@property (nonatomic, copy) NSString * placeholderImageName;
-
 @property (nonatomic, weak) id<ZBannerViewDelegate> delegate;
 
 + (instancetype)bannerView;

@@ -33,7 +33,9 @@ Pod::Spec.new do |s|
 
   s.frameworks = "UIKit", "Foundation","Photos","QuartzCore"
   s.resources  = 'NRShopSugerLib/MyObject/Resources/*.{png,xib,nib,bundle,storyboard}'
-#s.dependency 'Masonry'
+
+    s.dependency 'Masonry'
+    s.dependency 'YYKit'
 
 
 end

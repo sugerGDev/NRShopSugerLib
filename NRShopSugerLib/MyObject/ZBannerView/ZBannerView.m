@@ -7,6 +7,9 @@
 //
 
 #import "ZBannerView.h"
+#import <YYKit/YYKit.h>
+#import <Masonry/Masonry.h>
+
 // 图片滚动时间间隔
 #define kImageScrollTimeInterval 2.0
 
@@ -48,7 +51,9 @@ typedef NS_ENUM(NSUInteger, ZBannerScrollType) {
     [self stopTimer];
     [super removeFromSuperview];
 }
-
+- (void)dealloc {
+    [self stopTimer];
+}
 + (instancetype)bannerView {
     return [[self alloc] init];
 }
@@ -72,9 +77,8 @@ typedef NS_ENUM(NSUInteger, ZBannerScrollType) {
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    self.scrollView.frame = self.bounds;
-    self.pageControl.center = CGPointMake(self.center.x, CGRectGetMaxY(self.scrollView.frame) - 20);
     self.scrollView.contentSize = CGSizeMake(self.frame.size.width * 3, 0);
+    
     CGFloat vWidth = self.scrollView.frame.size.width;
     CGFloat vHeight = self.scrollView.frame.size.height;
     self.displayImageView.frame = CGRectMake(vWidth, 0, vWidth, vHeight);
@@ -92,10 +96,22 @@ typedef NS_ENUM(NSUInteger, ZBannerScrollType) {
     scrollView.pagingEnabled = YES;
     scrollView.showsHorizontalScrollIndicator = NO;
     
+    [self.scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.right.bottom.equalTo(self);
+    }];
+  
+    
     UIPageControl * pageControl = [[UIPageControl alloc] init];
     [self addSubview:pageControl];
     self.pageControl = pageControl;
     pageControl.currentPageIndicatorTintColor = [UIColor redColor];
+    
+    [self.pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self);
+        make.height.mas_equalTo(@20);
+        make.bottom.equalTo(self).offset(-10);
+    }];
+    
     
     UIImageView * displayImageView = [[UIImageView alloc] init];
     [self.scrollView addSubview:displayImageView];
@@ -107,6 +123,10 @@ typedef NS_ENUM(NSUInteger, ZBannerScrollType) {
     UIImageView * reuseImageView = [[UIImageView alloc] init];
     [self.scrollView addSubview:reuseImageView];
     self.reuseImageView = reuseImageView;
+    
+    displayImageView.backgroundColor = [UIColor colorWithWhite:0.667 alpha:0.500];
+    reuseImageView.backgroundColor = [UIColor colorWithWhite:0.667 alpha:0.500];
+    
 }
 
 // 判断View是否在屏幕中
@@ -129,29 +149,12 @@ typedef NS_ENUM(NSUInteger, ZBannerScrollType) {
     [self startTimer];
 }
 
-- (void)setImageNames:(NSArray *)imageNames {
-    
-    _imageNames = imageNames;
-    
-    self.imageArray = imageNames;
-    
-    self.pageControl.numberOfPages = imageNames.count;
-    
-    [self loadDisplayImage];
-    [self startTimer];
-}
 
 #pragma mark - 加载图片
 - (void)loadDisplayImage {
-    if (self.imageNames) {
-        NSString * fileUrl = [[NSBundle mainBundle] pathForResource:self.imageArray[self.currentImageIndex] ofType:nil];
-        self.displayImageView.image = [UIImage imageWithContentsOfFile:fileUrl];
-        //        self.displayImageView.image = [UIImage imageNamed:self.imageArray[self.currentImageIndex]];
-    } else {
-        //网络下载－DEBUG
-        //        UIImage * placeholderImage = self.placeholderImageName ? [UIImage imageNamed:self.placeholderImageName] : nil;
-        //        [self.displayImageView sd_setImageWithURL:self.imageArray[self.currentImageIndex] placeholderImage:placeholderImage];
-    }
+    
+    NSString* urlStr = self.imageUrls[self.currentImageIndex ];
+    [self.displayImageView setImageURL:[NSURL URLWithString:urlStr]];
     
     [self.scrollView setContentOffset:CGPointMake(self.scrollView.frame.size.width, 0)];
     
@@ -169,17 +172,9 @@ typedef NS_ENUM(NSUInteger, ZBannerScrollType) {
         reuseIndex = [self formatIndexWithIndex:reuseIndex + 1];
     }
     
-    if (self.imageNames) {
-        NSString * fileUrl = [[NSBundle mainBundle] pathForResource:self.imageArray[reuseIndex] ofType:nil];
-        self.reuseImageView.image = [UIImage imageWithContentsOfFile:fileUrl];
-        //        self.reuseImageView.image = [UIImage imageNamed:self.imageArray[reuseIndex]];
-    } else {
-        
-        //网络下载－－－DEBUG
-        //        UIImage * placeholderImage = self.placeholderImageName ? [UIImage imageNamed:self.placeholderImageName] : nil;
-        //        [self.reuseImageView sd_setImageWithURL:self.imageUrls[reuseIndex] placeholderImage:placeholderImage];
-    }
     
+    NSString* urlStr = self.imageUrls[reuseIndex ];
+    [self.reuseImageView setImageURL:[NSURL URLWithString:urlStr]];
     self.reuseImageView.frame = frame;
 }
 
