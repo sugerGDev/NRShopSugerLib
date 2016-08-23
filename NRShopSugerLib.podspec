@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.version      = "0.0.3"
   s.summary      = "the part of NRShop lib"
 
-  s.homepage     = "https://github.com/sugerGDev/NRShopSuqgerLib"
+  s.homepage     = "https://github.com/sugerGDev/NRShopSugerLib"
 
   s.license      = "MIT"
   s.license      = { :type => "MIT", :file => "LICENSE" }
