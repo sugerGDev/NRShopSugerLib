@@ -9,5 +9,7 @@
 #ifndef NRShopSugerLib_h
 #define NRShopSugerLib_h
 
+#import "ZBannerView.h"
+#import "UIButton+CustomAdd.h"
 
 #endif /* NRShopSugerLib_h */

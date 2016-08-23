@@ -1,17 +1,15 @@
 {
-  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "d0743cba-2daf-4b12-9882-fab159e76fe3++686",
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "7721A20E7581447A0390209BF49BDB78E529B7D7",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
-    "d0743cba-2daf-4b12-9882-fab159e76fe3++686" : {
+    "7721A20E7581447A0390209BF49BDB78E529B7D7" : {
 
     }
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "d0743cba-2daf-4b12-9882-fab159e76fe3++686" : 0,
     "7721A20E7581447A0390209BF49BDB78E529B7D7" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "909140CD-BB5D-4681-8EB3-DF4E91CF16C2",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "d0743cba-2daf-4b12-9882-fab159e76fe3++686" : "NRShopSugerLib\/",
     "7721A20E7581447A0390209BF49BDB78E529B7D7" : "NRShopSugerLib\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "NRShopSugerLib",
@@ -19,14 +17,14 @@
   "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "NRShopSugerLib.xcworkspace",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
     {
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/sugerGDev\/NRShopSugerLib.git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/code.taobao.org\/svn\/NRShop",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7721A20E7581447A0390209BF49BDB78E529B7D7"
     },
     {
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/code.taobao.org\/svn\/NRShop",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "d0743cba-2daf-4b12-9882-fab159e76fe3++686"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/sugerGDev\/NRShopSugerLib.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7721A20E7581447A0390209BF49BDB78E529B7D7"
     }
   ]
 }

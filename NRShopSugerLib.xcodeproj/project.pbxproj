@@ -16,6 +16,8 @@
 		91471AA91D634A7D006067C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91471AA71D634A7D006067C8 /* LaunchScreen.storyboard */; };
 		91471AB11D634AE3006067C8 /* NRShopSugerLib.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 91471AB01D634AE3006067C8 /* NRShopSugerLib.podspec */; };
 		91471AB81D634FE0006067C8 /* NRShopSugerLib.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91471AB71D634FE0006067C8 /* NRShopSugerLib.storyboard */; };
+		9916454A1D6C4E27009EC7AE /* UIButton+CustomAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 991645491D6C4E27009EC7AE /* UIButton+CustomAdd.m */; };
+		991646571D6C50BA009EC7AE /* ZBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 991646561D6C50BA009EC7AE /* ZBannerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,10 @@
 		91471AB01D634AE3006067C8 /* NRShopSugerLib.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NRShopSugerLib.podspec; sourceTree = "<group>"; };
 		91471AB61D634F86006067C8 /* NRShopSugerLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRShopSugerLib.h; sourceTree = "<group>"; };
 		91471AB71D634FE0006067C8 /* NRShopSugerLib.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NRShopSugerLib.storyboard; sourceTree = "<group>"; };
+		991645481D6C4E27009EC7AE /* UIButton+CustomAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+CustomAdd.h"; sourceTree = "<group>"; };
+		991645491D6C4E27009EC7AE /* UIButton+CustomAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+CustomAdd.m"; sourceTree = "<group>"; };
+		991646551D6C50BA009EC7AE /* ZBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBannerView.h; sourceTree = "<group>"; };
+		991646561D6C50BA009EC7AE /* ZBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBannerView.m; sourceTree = "<group>"; };
 		EED081F642A63F2AEABE5496 /* Pods-NRShopSugerLib.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NRShopSugerLib.release.xcconfig"; path = "Pods/Target Support Files/Pods-NRShopSugerLib/Pods-NRShopSugerLib.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +111,8 @@
 		91471AB41D634B49006067C8 /* MyObject */ = {
 			isa = PBXGroup;
 			children = (
+				991646541D6C50BA009EC7AE /* ZBannerView */,
+				991645471D6C4E27009EC7AE /* Category */,
 				91471AB51D634B49006067C8 /* Resources */,
 				91471AB61D634F86006067C8 /* NRShopSugerLib.h */,
 			);
@@ -117,6 +125,24 @@
 				91471AB71D634FE0006067C8 /* NRShopSugerLib.storyboard */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		991645471D6C4E27009EC7AE /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				991645481D6C4E27009EC7AE /* UIButton+CustomAdd.h */,
+				991645491D6C4E27009EC7AE /* UIButton+CustomAdd.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		991646541D6C50BA009EC7AE /* ZBannerView */ = {
+			isa = PBXGroup;
+			children = (
+				991646551D6C50BA009EC7AE /* ZBannerView.h */,
+				991646561D6C50BA009EC7AE /* ZBannerView.m */,
+			);
+			path = ZBannerView;
 			sourceTree = "<group>";
 		};
 		F64C7D38C2997DD12DF6FB89 /* Frameworks */ = {
@@ -250,9 +276,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9916454A1D6C4E27009EC7AE /* UIButton+CustomAdd.m in Sources */,
 				91471AA11D634A7D006067C8 /* ViewController.m in Sources */,
 				91471A9E1D634A7D006067C8 /* AppDelegate.m in Sources */,
 				91471A9B1D634A7D006067C8 /* main.m in Sources */,
+				991646571D6C50BA009EC7AE /* ZBannerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

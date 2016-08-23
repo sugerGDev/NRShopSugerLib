@@ -9,10 +9,10 @@ Pod::Spec.new do |s|
 
 
   s.name         = "NRShopSugerLib"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "the part of NRShop lib"
 
-  s.homepage     = "https://github.com/sugerGDev/NRShopSugerLib"
+  s.homepage     = "https://github.com/sugerGDev/NRShopSuqgerLib"
 
   s.license      = "MIT"
   s.license      = { :type => "MIT", :file => "LICENSE" }
@@ -33,7 +33,7 @@ Pod::Spec.new do |s|
 
   s.frameworks = "UIKit", "Foundation","Photos","QuartzCore"
   s.resources  = 'NRShopSugerLib/MyObject/Resources/*.{png,xib,nib,bundle,storyboard}'
-  s.dependency 'Masonry'
+#s.dependency 'Masonry'
 
 
 end
