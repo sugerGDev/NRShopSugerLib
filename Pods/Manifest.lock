@@ -1,12 +1,17 @@
 PODS:
   - Masonry (1.0.1)
+  - YYKit (1.0.7):
+    - YYKit/no-arc (= 1.0.7)
+  - YYKit/no-arc (1.0.7)
 
 DEPENDENCIES:
   - Masonry
+  - YYKit
 
 SPEC CHECKSUMS:
   Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
+  YYKit: 843d1b26e20b82c695790c9a89907eaa1e99907f
 
-PODFILE CHECKSUM: 8931ceff50ed5d50d40aea5f2cfb078dd53c72c4
+PODFILE CHECKSUM: f9aecbdbb2c59c167204eacad11df4f699e28139
 
 COCOAPODS: 1.0.1
