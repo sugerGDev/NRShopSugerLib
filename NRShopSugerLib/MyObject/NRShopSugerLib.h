@@ -10,6 +10,7 @@
 #define NRShopSugerLib_h
 
 #import "ZBannerView.h"
+#import "MBTIMgrTextField.h"
 #import "UIButton+CustomAdd.h"
 
 #endif /* NRShopSugerLib_h */
