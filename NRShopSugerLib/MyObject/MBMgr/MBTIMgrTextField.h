@@ -13,14 +13,6 @@
  */
 @interface MBTIMgrTextField : UITextField<UITextFieldDelegate>
 /*!
- *  @brief 单利创建TextField
- *
- *  @return 创建的TextField 对象
- *
- *  @since 1.0
- */
-+(instancetype)textField;
-/*!
  *  限制字符字数，若默认不设置，限制20个字符
  */
 @property (nonatomic , assign, readwrite) NSNumber* limitNumber;

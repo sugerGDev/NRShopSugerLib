@@ -27,10 +27,9 @@
 /**
  *  图片Url数组
  */
-@property (nonatomic, strong) NSArray * imageUrls;
+@property (nonatomic, copy) NSArray * imageUrls;
 
 @property (nonatomic, weak) id<ZBannerViewDelegate> delegate;
 
-+ (instancetype)bannerView;
 
 @end

@@ -11,23 +11,12 @@
 /*!
  *  @brief 点击事件定义
  */
-typedef void(^TapActionBlock)(__weak UIButton *tapSender);
-typedef void(^InitWithBlock)(__weak UIButton *initSender);
+typedef void(^TapActionBlock)( UIButton *tapSender);
 
 /*!
  Button 点击事件处理
  */
 @interface UIButton (TapAction)
-/*!
- *  @brief 初始化一个包有一个点击事件的Button,注意 Block 中循环引用问题 ！！！
- *
- *  @param aBlock 初始化回调 Block
- *
- *  @return 返回 Button实例，从 InitWithBlock 返回Button实例
- *
- *  @since 1.0
- */
-+ (instancetype)createWithTapActionBlock:(InitWithBlock)aBlock ;
 
 /*!
  *  @brief 对Button加入一个点击事件Block

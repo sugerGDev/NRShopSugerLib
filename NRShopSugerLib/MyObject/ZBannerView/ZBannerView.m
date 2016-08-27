@@ -11,7 +11,7 @@
 #import <Masonry/Masonry.h>
 
 // 图片滚动时间间隔
-#define kImageScrollTimeInterval 2.0
+#define kImageScrollTimeInterval 3.0
 
 
 typedef NS_ENUM(NSUInteger, ZBannerScrollType) {
@@ -54,10 +54,12 @@ typedef NS_ENUM(NSUInteger, ZBannerScrollType) {
 - (void)dealloc {
     [self stopTimer];
 }
-+ (instancetype)bannerView {
-    return [[self alloc] init];
+- (instancetype)init {
+    if (self = [super init]) {
+        [self setupViews];
+    }
+    return self;
 }
-
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         

@@ -11,10 +11,6 @@
 
 @implementation MBTIMgrTextField
 #pragma mark - Life Method
-+(instancetype)textField {
-    
-    return [[self alloc]init];
-}
 
 - (instancetype)init {
     if (self = [super init]) {
@@ -40,7 +36,7 @@
 - (void)setupInit {
     self.tintColor = [UIColor colorWithRed:0.890 green:0.173 blue:0.212 alpha:1.000];
     [self setDelegate:self];
-    [self setClearButtonMode: UITextFieldViewModeWhileEditing];
+    [self setClearButtonMode:UITextFieldViewModeWhileEditing];
     [self setReturnKeyType:UIReturnKeyDone];
     //在ip5 以下会出现崩溃的问题，改用通知实现
     //    [self addTarget:self action:@selector(textFieldValueChange:) forControlEvents:UIControlEventEditingChanged];
@@ -49,7 +45,7 @@
                                             selector:@selector(textFieldValueChange:)
                                                 name:UITextFieldTextDidChangeNotification
                                               object:nil];
-    
+    self.limitNumber = @20;
     
 }
 
@@ -89,6 +85,11 @@
       shouldChangeCharactersInRange:(NSRange)range
                   replacementString:(NSString *)string {
     
+    //不是输入手机号和银行卡号的时候...
+    if (_isNeedBankNumSgmentation == NO
+        || _isNeedPhoneNumSgmentation == NO) {
+        return YES;
+    }
     // 16位以内 (3个空格)
     NSString *str_segmentation = [NSString stringWithFormat:@"%@%@",textField.text,string];
     if (textField.text.length < [self.limitNumber integerValue]) {
@@ -131,10 +132,7 @@
     if (NO == [textField isEqual:self]) {
         return;
     }
-    int limit = 0;
-    
-    if (!self.limitNumber) limit = 20;
-    else limit = [self.limitNumber intValue];
+    int limit = [self.limitNumber intValue];
     
     if (textField.text.length >= limit) {
         //限制字符串长度为20

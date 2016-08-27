@@ -41,15 +41,6 @@ static const int block_key;
 @implementation UIButton (TapAction)
 
 #pragma mark - Publice
-+ (instancetype)createWithTapActionBlock:(InitWithBlock)aBlock {
-    
-    UIButton *aBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    __weak typeof(UIButton *) wBtn = aBtn;
-    if (aBlock) {
-        aBlock(wBtn);
-    }
-    return wBtn;
-}
 
 - (void)addTapActionBlock:(TapActionBlock)aBlock {
     //get targets

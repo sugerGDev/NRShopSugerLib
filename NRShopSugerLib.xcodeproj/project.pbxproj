@@ -20,6 +20,7 @@
 		991646571D6C50BA009EC7AE /* ZBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 991646561D6C50BA009EC7AE /* ZBannerView.m */; };
 		997FFA7B1D6D41770028C221 /* NSString+CustomValid.m in Sources */ = {isa = PBXBuildFile; fileRef = 997FFA7A1D6D41770028C221 /* NSString+CustomValid.m */; };
 		997FFA7F1D6D42680028C221 /* MBTIMgrTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 997FFA7E1D6D42680028C221 /* MBTIMgrTextField.m */; };
+		99DCD47C1D712813001205D1 /* NSObject+CustomAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DCD47B1D712813001205D1 /* NSObject+CustomAdd.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,8 @@
 		997FFA7A1D6D41770028C221 /* NSString+CustomValid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CustomValid.m"; sourceTree = "<group>"; };
 		997FFA7D1D6D42680028C221 /* MBTIMgrTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBTIMgrTextField.h; sourceTree = "<group>"; };
 		997FFA7E1D6D42680028C221 /* MBTIMgrTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBTIMgrTextField.m; sourceTree = "<group>"; };
+		99DCD47A1D712813001205D1 /* NSObject+CustomAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CustomAdd.h"; sourceTree = "<group>"; };
+		99DCD47B1D712813001205D1 /* NSObject+CustomAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CustomAdd.m"; sourceTree = "<group>"; };
 		EED081F642A63F2AEABE5496 /* Pods-NRShopSugerLib.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NRShopSugerLib.release.xcconfig"; path = "Pods/Target Support Files/Pods-NRShopSugerLib/Pods-NRShopSugerLib.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,6 +144,8 @@
 				997FFA7A1D6D41770028C221 /* NSString+CustomValid.m */,
 				991645481D6C4E27009EC7AE /* UIButton+CustomAdd.h */,
 				991645491D6C4E27009EC7AE /* UIButton+CustomAdd.m */,
+				99DCD47A1D712813001205D1 /* NSObject+CustomAdd.h */,
+				99DCD47B1D712813001205D1 /* NSObject+CustomAdd.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -297,6 +302,7 @@
 			files = (
 				9916454A1D6C4E27009EC7AE /* UIButton+CustomAdd.m in Sources */,
 				997FFA7F1D6D42680028C221 /* MBTIMgrTextField.m in Sources */,
+				99DCD47C1D712813001205D1 /* NSObject+CustomAdd.m in Sources */,
 				91471AA11D634A7D006067C8 /* ViewController.m in Sources */,
 				91471A9E1D634A7D006067C8 /* AppDelegate.m in Sources */,
 				91471A9B1D634A7D006067C8 /* main.m in Sources */,
