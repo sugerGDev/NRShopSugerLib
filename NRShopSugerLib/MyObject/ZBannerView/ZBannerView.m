@@ -29,8 +29,7 @@ typedef NS_ENUM(NSUInteger, ZBannerScrollType) {
 // 当前显示图片的Index
 @property (nonatomic, assign) NSInteger currentImageIndex;
 
-// 数据处理用Array
-@property (nonatomic, strong) NSArray * imageArray;
+
 
 // 滚动时显示的Image
 @property (nonatomic, weak) UIImageView * reuseImageView;
@@ -42,17 +41,20 @@ typedef NS_ENUM(NSUInteger, ZBannerScrollType) {
 @end
 
 @implementation ZBannerView
-{
-    NSTimer * _timer;
-}
 
 #pragma mark - 生命周期函数
 - (void)removeFromSuperview {
-    [self stopTimer];
     [super removeFromSuperview];
 }
 - (void)dealloc {
-    [self stopTimer];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    
+    [self.displayImageView cancelCurrentImageRequest];
+    [self.reuseImageView cancelCurrentImageRequest];
+    
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+    self.scrollView.delegate = nil;
+    
 }
 - (instancetype)init {
     if (self = [super init]) {
@@ -101,7 +103,7 @@ typedef NS_ENUM(NSUInteger, ZBannerScrollType) {
     [self.scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.right.bottom.equalTo(self);
     }];
-  
+    
     
     UIPageControl * pageControl = [[UIPageControl alloc] init];
     [self addSubview:pageControl];
@@ -143,8 +145,6 @@ typedef NS_ENUM(NSUInteger, ZBannerScrollType) {
     
     _imageUrls = imageUrls;
     
-    self.imageArray = imageUrls;
-    
     self.pageControl.numberOfPages = imageUrls.count;
     
     [self loadDisplayImage];
@@ -183,8 +183,8 @@ typedef NS_ENUM(NSUInteger, ZBannerScrollType) {
 - (NSInteger)formatIndexWithIndex:(NSInteger)idx {
     NSInteger resultIdx = idx;
     if (resultIdx < 0) {
-        resultIdx = self.imageArray.count - 1;
-    } else if (resultIdx == self.imageArray.count) {
+        resultIdx = self.imageUrls.count - 1;
+    } else if (resultIdx == self.imageUrls.count) {
         resultIdx = 0;
     }
     return resultIdx;
@@ -201,26 +201,32 @@ typedef NS_ENUM(NSUInteger, ZBannerScrollType) {
 
 #pragma mark - 自动滚动计时器
 - (void)startTimer {
-    if (_timer == nil) {
-        _timer = [NSTimer scheduledTimerWithTimeInterval:kImageScrollTimeInterval target:self selector:@selector(scrollImage) userInfo:nil repeats:YES];
-        [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
-    }
+    //    if (_timer == nil) {
+    //        _timer = [NSTimer scheduledTimerWithTimeInterval:kImageScrollTimeInterval target:self selector:@selector(scrollImage) userInfo:nil repeats:YES];
+    //        [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+    //    }
+    [self performSelector:@selector(scrollImage) afterDelay:kImageScrollTimeInterval];
 }
 
 - (void)stopTimer {
-    if ([_timer isValid]) {
-        [_timer invalidate];
-        _timer = nil;
-    }
+    //    if ([_timer isValid]) {
+    //        [_timer invalidate];
+    //        _timer = nil;
+    //    }
+
 }
 
 - (void)scrollImage {
-    [self.scrollView setContentOffset:CGPointMake(self.scrollView.frame.size.width * 2, 0) animated:YES];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    CGPoint offset = CGPointMake(self.scrollView.frame.size.width * 2, 0);
+    [self.scrollView setContentOffset:offset animated:YES];
+    
+    [self performSelector:@selector(scrollImage) afterDelay:kImageScrollTimeInterval];
 }
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    [self stopTimer];
+    
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
@@ -257,8 +263,8 @@ typedef NS_ENUM(NSUInteger, ZBannerScrollType) {
 
 #pragma mark - 点击图片回调代理
 - (void)imageClick {
-    if ([self.delegate respondsToSelector:@selector(bannerView:imageDidClickWithIndex:)]) {
-        [self.delegate bannerView:self imageDidClickWithIndex:self.currentImageIndex];
+    if ([self.zbDelegate respondsToSelector:@selector(bannerView:imageDidClickWithIndex:)]) {
+        [self.zbDelegate bannerView:self imageDidClickWithIndex:self.currentImageIndex];
     }
 }
 

@@ -29,7 +29,7 @@
  */
 @property (nonatomic, copy) NSArray * imageUrls;
 
-@property (nonatomic, weak) id<ZBannerViewDelegate> delegate;
+@property (nonatomic, weak) id<ZBannerViewDelegate> zbDelegate;
 
 
 @end
