@@ -67,7 +67,7 @@ typedef void(^TapActionBlock)( UIButton *tapSender);
  *
  *  @since <#1.0#>
  */
-- (void)removeAllButtonTapAction;
+- (void)removeAllButtonTapActions;
 /*!
  *  @brief 移除当前 UIView 上指定 Button 的点击事件
  *

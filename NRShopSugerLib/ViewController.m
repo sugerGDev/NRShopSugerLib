@@ -20,7 +20,7 @@
 
 @implementation ViewController
 - (void)dealloc {
-    [self.view removeAllButtonTapAction];
+    [self.view removeAllButtonTapActions];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
