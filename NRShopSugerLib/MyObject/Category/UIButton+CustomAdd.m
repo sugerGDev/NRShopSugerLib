@@ -118,7 +118,7 @@ static const int block_key;
 @end
 
 
-@implementation UIButton(ButtonTapActionRemove)
+@implementation UIView(ButtonTapActionRemove)
 
 - (void)removeAllButtonTapActions {
     for (UIButton *aBtn in self.subviews) {
