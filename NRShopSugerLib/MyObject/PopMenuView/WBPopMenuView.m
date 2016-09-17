@@ -7,7 +7,7 @@
 //
 
 #import "WBPopMenuView.h"
-#import <YYKit.h>
+#import <YYKit/YYKit.h>
 /*!
  *  - (IBAction)PopMenuClik:(id)sender {
  

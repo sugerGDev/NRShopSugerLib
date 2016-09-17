@@ -8,7 +8,7 @@
 
 #import "CYPasswordView.h"
 #import "UIView+Extension.h"
-#import <YYKit.h>
+#import <YYKit/YYKit.h>
 #define kPWDLength 6
 
 @interface CYPasswordView () <UITextFieldDelegate>
