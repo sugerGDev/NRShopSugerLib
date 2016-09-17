@@ -26,10 +26,9 @@ typedef NS_ENUM(NSUInteger, ZBannerScrollType) {
 
 @property (nonatomic, weak) UIScrollView * scrollView;
 
+
 // 当前显示图片的Index
 @property (nonatomic, assign) NSInteger currentImageIndex;
-
-
 
 // 滚动时显示的Image
 @property (nonatomic, weak) UIImageView * reuseImageView;
@@ -131,6 +130,7 @@ typedef NS_ENUM(NSUInteger, ZBannerScrollType) {
     displayImageView.backgroundColor = [UIColor colorWithWhite:0.667 alpha:0.500];
     reuseImageView.backgroundColor = [UIColor colorWithWhite:0.667 alpha:0.500];
     
+    self.isAutoScrollView = YES; //默认开启自动滚动
 }
 
 // 判断View是否在屏幕中
@@ -144,11 +144,9 @@ typedef NS_ENUM(NSUInteger, ZBannerScrollType) {
 - (void)setImageUrls:(NSArray *)imageUrls {
     
     _imageUrls = imageUrls;
-    
     self.pageControl.numberOfPages = imageUrls.count;
     
     [self loadDisplayImage];
-    [self startTimer];
 }
 
 
@@ -159,8 +157,12 @@ typedef NS_ENUM(NSUInteger, ZBannerScrollType) {
     [self.displayImageView setImageURL:[NSURL URLWithString:urlStr]];
     
     [self.scrollView setContentOffset:CGPointMake(self.scrollView.frame.size.width, 0)];
-    
     self.pageControl.currentPage = self.currentImageIndex;
+    
+    if (
+        [self.zbDelegate respondsToSelector:@selector(bannerView:imageDidDisplayWithIndex:)]) {
+        [self.zbDelegate bannerView:self imageDidDisplayWithIndex:self.currentImageIndex];
+    }
 }
 
 - (void)loadReuseImage {
@@ -200,23 +202,27 @@ typedef NS_ENUM(NSUInteger, ZBannerScrollType) {
 }
 
 #pragma mark - 自动滚动计时器
+- (void)setIsAutoScrollView:(BOOL)isAutoScrollView {
+    _isAutoScrollView = isAutoScrollView;
+    
+    if (_isAutoScrollView == NO) {
+        [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    }else {
+        [self startTimer];
+    }
+}
 - (void)startTimer {
-    //    if (_timer == nil) {
-    //        _timer = [NSTimer scheduledTimerWithTimeInterval:kImageScrollTimeInterval target:self selector:@selector(scrollImage) userInfo:nil repeats:YES];
-    //        [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
-    //    }
     [self performSelector:@selector(scrollImage) afterDelay:kImageScrollTimeInterval];
 }
 
-- (void)stopTimer {
-    //    if ([_timer isValid]) {
-    //        [_timer invalidate];
-    //        _timer = nil;
-    //    }
 
-}
 
 - (void)scrollImage {
+    // 关闭自动滚动
+    if (_isAutoScrollView == NO) {
+        return;
+    }
+    
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
     CGPoint offset = CGPointMake(self.scrollView.frame.size.width * 2, 0);
     [self.scrollView setContentOffset:offset animated:YES];

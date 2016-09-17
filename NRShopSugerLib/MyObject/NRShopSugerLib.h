@@ -13,4 +13,8 @@
 #import "MBTIMgrTextField.h"    //自定义TextField
 #import "UIButton+CustomAdd.h"  //UIButton 分类
 #import "NSObject+CustomAdd.h" //NSObject分类
+
+#import "JSWave.h" //波浪
+#import "CYPasswordView.h" //密码输入框
+
 #endif /* NRShopSugerLib_h */

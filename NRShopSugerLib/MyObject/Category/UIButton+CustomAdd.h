@@ -11,7 +11,7 @@
 /*!
  *  @brief 点击事件定义
  */
-typedef void(^TapActionBlock)( UIButton *tapSender);
+typedef void(^TapActionBlock)( id tapSender);
 
 /*!
  Button 点击事件处理
@@ -54,6 +54,15 @@ typedef void(^TapActionBlock)( UIButton *tapSender);
  *  @since <#1.0#>
  */
 - (CGSize)setNormalBgImage:(UIImage *)aNormalBgImage atSetSelectedBgImage:(UIImage *)aSelectedBgImage;
+
+/*!
+ *  @brief 调整 Image 和 Title 反方向位置
+ *
+ *  @param font 当前字体 UIFont 对象
+ *
+ *  @since version number
+ */
+- (void)adjustImageWithTitleInOpposingSideByFont:(UIFont *)font;
 @end
 
 /*!

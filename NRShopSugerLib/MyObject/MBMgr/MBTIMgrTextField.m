@@ -34,7 +34,7 @@
 }
 
 - (void)setupInit {
-    self.tintColor = [UIColor colorWithRed:0.890 green:0.173 blue:0.212 alpha:1.000];
+    self.tintColor = [UIColor colorWithRed:0.929 green:0.102 blue:0.388 alpha:1.000];
     [self setDelegate:self];
     [self setClearButtonMode:UITextFieldViewModeWhileEditing];
     [self setReturnKeyType:UIReturnKeyDone];
@@ -87,9 +87,15 @@
     
     //不是输入手机号和银行卡号的时候...
     if (_isNeedBankNumSgmentation == NO
-        || _isNeedPhoneNumSgmentation == NO) {
+        && _isNeedPhoneNumSgmentation == NO) {
         return YES;
     }
+    
+    //判断是否有Delegate
+    if ([_aTDelegate respondsToSelector:@selector(delegateTextFieldValueChange:)]) {
+        [_aTDelegate delegateTextFieldValueChange:textField];
+    }
+    
     // 16位以内 (3个空格)
     NSString *str_segmentation = [NSString stringWithFormat:@"%@%@",textField.text,string];
     if (textField.text.length < [self.limitNumber integerValue]) {

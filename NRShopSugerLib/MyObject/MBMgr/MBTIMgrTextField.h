@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class MBTIMgrTextField;
+@protocol MBTIMgrTextFieldDelegate <NSObject>
+@optional
+- (void)delegateTextFieldValueChange:(UITextField *)aTextField;
+@end
 /*!
  * 重载 UITextField 控件， 自定义一些属性
  */
@@ -37,4 +41,6 @@
 - (BOOL)isValidName;
 - (BOOL)isValidPhone;
 - (BOOL)isEmpty;
+
+@property (nonatomic , weak) id<MBTIMgrTextFieldDelegate> aTDelegate;
 @end

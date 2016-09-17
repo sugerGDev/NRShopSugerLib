@@ -21,6 +21,17 @@
 		997FFA7B1D6D41770028C221 /* NSString+CustomValid.m in Sources */ = {isa = PBXBuildFile; fileRef = 997FFA7A1D6D41770028C221 /* NSString+CustomValid.m */; };
 		997FFA7F1D6D42680028C221 /* MBTIMgrTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 997FFA7E1D6D42680028C221 /* MBTIMgrTextField.m */; };
 		99DCD47C1D712813001205D1 /* NSObject+CustomAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DCD47B1D712813001205D1 /* NSObject+CustomAdd.m */; };
+		9B34C4011D8CE56B008B005A /* CYConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B34C3F91D8CE56B008B005A /* CYConst.m */; };
+		9B34C4021D8CE56B008B005A /* CYPasswordInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B34C3FB1D8CE56B008B005A /* CYPasswordInputView.m */; };
+		9B34C4041D8CE56B008B005A /* CYPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B34C3FE1D8CE56B008B005A /* CYPasswordView.m */; };
+		9B34C4051D8CE56B008B005A /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B34C4001D8CE56B008B005A /* UIView+Extension.m */; };
+		9B34C4071D8CE58D008B005A /* CYPasswordView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9B34C4061D8CE58D008B005A /* CYPasswordView.bundle */; };
+		9B34C40B1D8CE5AD008B005A /* JSWave.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B34C40A1D8CE5AD008B005A /* JSWave.m */; };
+		9B34C40E1D8CE5FE008B005A /* NSDate+CustomAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B34C40D1D8CE5FE008B005A /* NSDate+CustomAdd.m */; };
+		9B34C4111D8CE622008B005A /* UILabel+CustomAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B34C4101D8CE622008B005A /* UILabel+CustomAdd.m */; };
+		9B34C4191D8CE62B008B005A /* WBPopMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B34C4141D8CE62B008B005A /* WBPopMenuView.m */; };
+		9B34C41A1D8CE62B008B005A /* WBTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B34C4161D8CE62B008B005A /* WBTableViewDataSource.m */; };
+		9B34C41B1D8CE62B008B005A /* WBTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B34C4181D8CE62B008B005A /* WBTableViewDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +60,27 @@
 		997FFA7E1D6D42680028C221 /* MBTIMgrTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBTIMgrTextField.m; sourceTree = "<group>"; };
 		99DCD47A1D712813001205D1 /* NSObject+CustomAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CustomAdd.h"; sourceTree = "<group>"; };
 		99DCD47B1D712813001205D1 /* NSObject+CustomAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CustomAdd.m"; sourceTree = "<group>"; };
+		9B34C3F81D8CE56B008B005A /* CYConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYConst.h; sourceTree = "<group>"; };
+		9B34C3F91D8CE56B008B005A /* CYConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYConst.m; sourceTree = "<group>"; };
+		9B34C3FA1D8CE56B008B005A /* CYPasswordInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYPasswordInputView.h; sourceTree = "<group>"; };
+		9B34C3FB1D8CE56B008B005A /* CYPasswordInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYPasswordInputView.m; sourceTree = "<group>"; };
+		9B34C3FD1D8CE56B008B005A /* CYPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYPasswordView.h; sourceTree = "<group>"; };
+		9B34C3FE1D8CE56B008B005A /* CYPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYPasswordView.m; sourceTree = "<group>"; };
+		9B34C3FF1D8CE56B008B005A /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		9B34C4001D8CE56B008B005A /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		9B34C4061D8CE58D008B005A /* CYPasswordView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CYPasswordView.bundle; sourceTree = "<group>"; };
+		9B34C4091D8CE5AD008B005A /* JSWave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSWave.h; sourceTree = "<group>"; };
+		9B34C40A1D8CE5AD008B005A /* JSWave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSWave.m; sourceTree = "<group>"; };
+		9B34C40C1D8CE5FE008B005A /* NSDate+CustomAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+CustomAdd.h"; sourceTree = "<group>"; };
+		9B34C40D1D8CE5FE008B005A /* NSDate+CustomAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+CustomAdd.m"; sourceTree = "<group>"; };
+		9B34C40F1D8CE622008B005A /* UILabel+CustomAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+CustomAdd.h"; sourceTree = "<group>"; };
+		9B34C4101D8CE622008B005A /* UILabel+CustomAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+CustomAdd.m"; sourceTree = "<group>"; };
+		9B34C4131D8CE62B008B005A /* WBPopMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBPopMenuView.h; sourceTree = "<group>"; };
+		9B34C4141D8CE62B008B005A /* WBPopMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBPopMenuView.m; sourceTree = "<group>"; };
+		9B34C4151D8CE62B008B005A /* WBTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBTableViewDataSource.h; sourceTree = "<group>"; };
+		9B34C4161D8CE62B008B005A /* WBTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTableViewDataSource.m; sourceTree = "<group>"; };
+		9B34C4171D8CE62B008B005A /* WBTableViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBTableViewDelegate.h; sourceTree = "<group>"; };
+		9B34C4181D8CE62B008B005A /* WBTableViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTableViewDelegate.m; sourceTree = "<group>"; };
 		EED081F642A63F2AEABE5496 /* Pods-NRShopSugerLib.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NRShopSugerLib.release.xcconfig"; path = "Pods/Target Support Files/Pods-NRShopSugerLib/Pods-NRShopSugerLib.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,6 +152,9 @@
 		91471AB41D634B49006067C8 /* MyObject */ = {
 			isa = PBXGroup;
 			children = (
+				9B34C4121D8CE62B008B005A /* PopMenuView */,
+				9B34C4081D8CE5AD008B005A /* HeaderWave */,
+				9B34C3F71D8CE56B008B005A /* CYPasswordView */,
 				997FFA7C1D6D42680028C221 /* MBMgr */,
 				991646541D6C50BA009EC7AE /* ZBannerView */,
 				991645471D6C4E27009EC7AE /* Category */,
@@ -132,6 +167,7 @@
 		91471AB51D634B49006067C8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9B34C4061D8CE58D008B005A /* CYPasswordView.bundle */,
 				91471AB71D634FE0006067C8 /* NRShopSugerLib.storyboard */,
 			);
 			path = Resources;
@@ -140,6 +176,10 @@
 		991645471D6C4E27009EC7AE /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				9B34C40F1D8CE622008B005A /* UILabel+CustomAdd.h */,
+				9B34C4101D8CE622008B005A /* UILabel+CustomAdd.m */,
+				9B34C40C1D8CE5FE008B005A /* NSDate+CustomAdd.h */,
+				9B34C40D1D8CE5FE008B005A /* NSDate+CustomAdd.m */,
 				997FFA791D6D41770028C221 /* NSString+CustomValid.h */,
 				997FFA7A1D6D41770028C221 /* NSString+CustomValid.m */,
 				991645481D6C4E27009EC7AE /* UIButton+CustomAdd.h */,
@@ -166,6 +206,43 @@
 				997FFA7E1D6D42680028C221 /* MBTIMgrTextField.m */,
 			);
 			path = MBMgr;
+			sourceTree = "<group>";
+		};
+		9B34C3F71D8CE56B008B005A /* CYPasswordView */ = {
+			isa = PBXGroup;
+			children = (
+				9B34C3F81D8CE56B008B005A /* CYConst.h */,
+				9B34C3F91D8CE56B008B005A /* CYConst.m */,
+				9B34C3FA1D8CE56B008B005A /* CYPasswordInputView.h */,
+				9B34C3FB1D8CE56B008B005A /* CYPasswordInputView.m */,
+				9B34C3FD1D8CE56B008B005A /* CYPasswordView.h */,
+				9B34C3FE1D8CE56B008B005A /* CYPasswordView.m */,
+				9B34C3FF1D8CE56B008B005A /* UIView+Extension.h */,
+				9B34C4001D8CE56B008B005A /* UIView+Extension.m */,
+			);
+			path = CYPasswordView;
+			sourceTree = "<group>";
+		};
+		9B34C4081D8CE5AD008B005A /* HeaderWave */ = {
+			isa = PBXGroup;
+			children = (
+				9B34C4091D8CE5AD008B005A /* JSWave.h */,
+				9B34C40A1D8CE5AD008B005A /* JSWave.m */,
+			);
+			path = HeaderWave;
+			sourceTree = "<group>";
+		};
+		9B34C4121D8CE62B008B005A /* PopMenuView */ = {
+			isa = PBXGroup;
+			children = (
+				9B34C4131D8CE62B008B005A /* WBPopMenuView.h */,
+				9B34C4141D8CE62B008B005A /* WBPopMenuView.m */,
+				9B34C4151D8CE62B008B005A /* WBTableViewDataSource.h */,
+				9B34C4161D8CE62B008B005A /* WBTableViewDataSource.m */,
+				9B34C4171D8CE62B008B005A /* WBTableViewDelegate.h */,
+				9B34C4181D8CE62B008B005A /* WBTableViewDelegate.m */,
+			);
+			path = PopMenuView;
 			sourceTree = "<group>";
 		};
 		F64C7D38C2997DD12DF6FB89 /* Frameworks */ = {
@@ -210,7 +287,6 @@
 				TargetAttributes = {
 					91471A951D634A7D006067C8 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 2VEA43BV3V;
 					};
 				};
 			};
@@ -242,6 +318,7 @@
 				91471AA61D634A7D006067C8 /* Assets.xcassets in Resources */,
 				91471AA41D634A7D006067C8 /* Main.storyboard in Resources */,
 				91471AB81D634FE0006067C8 /* NRShopSugerLib.storyboard in Resources */,
+				9B34C4071D8CE58D008B005A /* CYPasswordView.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,11 +377,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B34C4111D8CE622008B005A /* UILabel+CustomAdd.m in Sources */,
 				9916454A1D6C4E27009EC7AE /* UIButton+CustomAdd.m in Sources */,
+				9B34C4191D8CE62B008B005A /* WBPopMenuView.m in Sources */,
 				997FFA7F1D6D42680028C221 /* MBTIMgrTextField.m in Sources */,
+				9B34C4041D8CE56B008B005A /* CYPasswordView.m in Sources */,
+				9B34C41A1D8CE62B008B005A /* WBTableViewDataSource.m in Sources */,
+				9B34C40E1D8CE5FE008B005A /* NSDate+CustomAdd.m in Sources */,
+				9B34C40B1D8CE5AD008B005A /* JSWave.m in Sources */,
 				99DCD47C1D712813001205D1 /* NSObject+CustomAdd.m in Sources */,
 				91471AA11D634A7D006067C8 /* ViewController.m in Sources */,
+				9B34C4021D8CE56B008B005A /* CYPasswordInputView.m in Sources */,
+				9B34C41B1D8CE62B008B005A /* WBTableViewDelegate.m in Sources */,
+				9B34C4051D8CE56B008B005A /* UIView+Extension.m in Sources */,
 				91471A9E1D634A7D006067C8 /* AppDelegate.m in Sources */,
+				9B34C4011D8CE56B008B005A /* CYConst.m in Sources */,
 				91471A9B1D634A7D006067C8 /* main.m in Sources */,
 				997FFA7B1D6D41770028C221 /* NSString+CustomValid.m in Sources */,
 				991646571D6C50BA009EC7AE /* ZBannerView.m in Sources */,

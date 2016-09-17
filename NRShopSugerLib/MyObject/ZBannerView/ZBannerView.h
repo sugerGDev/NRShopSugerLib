@@ -20,6 +20,15 @@
  */
 - (void)bannerView:(ZBannerView *)bannerView imageDidClickWithIndex:(NSInteger)imageIndex;
 
+/*!
+ *  @brief 图片显示回调
+ *
+ *  @param bannerView <#bannerView description#>
+ *  @param imageIndex <#imageIndex description#>
+ *
+ *  @since <#version number#>
+ */
+- (void)bannerView:(ZBannerView *)bannerView imageDidDisplayWithIndex:(NSInteger)imageIndex;
 @end
 
 @interface ZBannerView : UIView
@@ -31,5 +40,10 @@
 
 @property (nonatomic, weak) id<ZBannerViewDelegate> zbDelegate;
 
-
+/*!
+ *  @brief 是否滚动
+ */
+@property (nonatomic , assign) BOOL isAutoScrollView;
+//重新加显示图片
+- (void)loadDisplayImage;
 @end

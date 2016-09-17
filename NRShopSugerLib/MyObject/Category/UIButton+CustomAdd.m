@@ -115,6 +115,16 @@ static const int block_key;
     return CGSizeMake(w, h );
 }
 
+- (void)adjustImageWithTitleInOpposingSideByFont:(UIFont *)font{
+    
+    //    NSString* title = [self titleForState:UIControlStateNormal];
+    //    UIImage* img = [self imageForState:UIControlStateNormal];
+    
+    self.imageEdgeInsets = UIEdgeInsetsMake(0, self.frame.size.width - 5, 0, 0);
+    self.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10);
+    
+    self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+}
 @end
 
 
