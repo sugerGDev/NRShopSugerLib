@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
 
 
   s.name         = "NRShopSugerLib"
-  s.version      = "0.0.9"
+  s.version      = "1.0.0"
   s.summary      = "the part of NRCGlobalShop lib"
 
   s.homepage     = "https://github.com/sugerGDev/NRShopSugerLib"
