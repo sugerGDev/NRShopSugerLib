@@ -7,7 +7,7 @@
 //
 
 #import "MBTIMgrTextField.h"
-#import "NSString+CustomValid.h"
+
 
 @implementation MBTIMgrTextField
 #pragma mark - Life Method
@@ -92,8 +92,8 @@
     }
     
     //判断是否有Delegate
-    if ([_aTDelegate respondsToSelector:@selector(delegateTextFieldValueChange:)]) {
-        [_aTDelegate delegateTextFieldValueChange:textField];
+    if ([_mbDelegate respondsToSelector:@selector(delegateTextFieldValueChange:)]) {
+        [_mbDelegate delegateTextFieldValueChange:textField];
     }
     
     // 16位以内 (3个空格)
@@ -142,7 +142,7 @@
     
     if (textField.text.length >= limit) {
         //限制字符串长度为20
-        self.text = [textField.text substringToIndex:limit];
+        self.text = [textField.text substringToIndex:(limit - 1)];
         
     }
 }

@@ -64,7 +64,7 @@
     /** 关闭按钮 */
     UIButton *btnCancel = [UIButton buttonWithType:UIButtonTypeCustom];
     [self addSubview:btnCancel];
-    [btnCancel setBackgroundImage:[UIImage imageNamed:CYPasswordViewSrcName(@"password_close")] forState:UIControlStateNormal];
+    [btnCancel setImage:[UIImage imageNamed:CYPasswordViewSrcName(@"password_close")] forState:UIControlStateNormal];
     [btnCancel setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     self.btnClose = btnCancel;
     [self.btnClose addTarget:self action:@selector(btnClose_Click:) forControlEvents:UIControlEventTouchUpInside];

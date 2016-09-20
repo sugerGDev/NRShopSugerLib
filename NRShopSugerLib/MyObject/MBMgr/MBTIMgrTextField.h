@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NSString+CustomValid.h"
+
 @class MBTIMgrTextField;
 @protocol MBTIMgrTextFieldDelegate <NSObject>
 @optional
@@ -42,5 +44,5 @@
 - (BOOL)isValidPhone;
 - (BOOL)isEmpty;
 
-@property (nonatomic , weak) id<MBTIMgrTextFieldDelegate> aTDelegate;
+@property (nonatomic , weak) id<MBTIMgrTextFieldDelegate> mbDelegate;
 @end
