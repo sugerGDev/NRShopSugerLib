@@ -149,10 +149,13 @@
 
 - (void)nextBtnClick
 {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored"-Wundeclared-selector"
     [self.navigationController popViewControllerAnimated:NO];
     if ([self.viewController canPerformAction:@selector(tappendDoneBtn) withSender:nil]){
         [self.viewController performSelector:@selector(tappendDoneBtn) withObject:nil];
     }
+#pragma clang diagnostic pop
 }
 
 - (void)displayForVC:(__weak UIViewController *)viewController

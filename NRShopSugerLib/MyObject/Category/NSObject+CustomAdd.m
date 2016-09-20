@@ -26,6 +26,7 @@
 + (instancetype)xibObjectWithBlock:(InitBlock)aBlock {
     
     NSString* str = NSStringFromClass([self class]);
+
     NSArray* array = [[NSBundle mainBundle]loadNibNamed:str owner:nil options:nil];
     
     NSObject *innerClass =  array.firstObject;

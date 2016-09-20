@@ -106,7 +106,7 @@
 
 - (void)getAllGroupAllPhotos:(BOOL)allPhotos withResource:(MLPhotoPickerDataPhotoCallBack)callBack{
     
-    MLImagePickerAssetsFilter assetsFilter = [MLPhotoPickerManager manager].assetsFilter;
+//    MLImagePickerAssetsFilter assetsFilter = [MLPhotoPickerManager manager].assetsFilter;
     NSMutableArray *groups = [NSMutableArray array];
     ALAssetsLibraryGroupsEnumerationResultsBlock resultBlock = ^(ALAssetsGroup *group, BOOL *stop){
         if (group){
