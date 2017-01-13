@@ -7,7 +7,6 @@
 //
 
 #import "NSString+CustomValid.h"
-
 @implementation NSString (CustomValid)
 
 ///合法身份证
@@ -115,7 +114,7 @@
 }
 
 
-//银行卡校验规则(Luhn算法)   
+//银行卡校验规则(Luhn算法)
 - (BOOL)isValidBankCardNumber
 {
     NSInteger len = [self length];
@@ -140,7 +139,7 @@
     }
     
     return ((sumNumOdd + sumNumEven) % 10 == 0);
-
+    
 }
 
 - (BOOL)isFlightOrTrainNumber
@@ -165,6 +164,9 @@
 }
 - (BOOL)isChineseAlphabet
 {
+    if (self.length == 0) {
+        return NO;
+    }
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"^([A-Za-z]|[\u4E00-\u9FA5]|[a-zA-Z0-9])+$"];
     return [pred evaluateWithObject:self];
 }
@@ -203,9 +205,9 @@
     NSString *passWordRegex = @"^[a-zA-Z0-9]{6,20}+$";
     NSPredicate *passWordPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",passWordRegex];
     return [passWordPredicate evaluateWithObject:self];
-//    NSString *pwsRegex = @"^[@A-Za-z0-9!#$%^&*.~]{6,20}$";
-//    NSPredicate *pwdTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",pwsRegex];
-//    return [pwdTest evaluateWithObject:self];
+    //    NSString *pwsRegex = @"^[@A-Za-z0-9!#$%^&*.~]{6,20}$";
+    //    NSPredicate *pwdTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",pwsRegex];
+    //    return [pwdTest evaluateWithObject:self];
 }
 
 
@@ -338,13 +340,13 @@
         [tmpStrArr addObject:[tmpStr substringWithRange:NSMakeRange(loc ,len)]];
         count += len;
     }
-//    NSArray*range = @[NSMakeRange(0, 2),NSMakeRange(3, 6),NSMakeRange(7, 10)];
-//    
-//    if (tmpStr.length <= 3) {
-//         [tmpStrArr addObject:[tmpStr substringWithRange:NSMakeRange(0, 3)]];
-//    }else {
-//        
-//    }
+    //    NSArray*range = @[NSMakeRange(0, 2),NSMakeRange(3, 6),NSMakeRange(7, 10)];
+    //
+    //    if (tmpStr.length <= 3) {
+    //         [tmpStrArr addObject:[tmpStr substringWithRange:NSMakeRange(0, 3)]];
+    //    }else {
+    //
+    //    }
     if (tmpStrArr.count) {
         
         tmpStr = [tmpStrArr componentsJoinedByString:@" "];
@@ -353,10 +355,120 @@
     return tmpStr;
 }
 
++(NSString *)stringFomatPhone:(NSString *)phone {
+    return [phone stringByReplacingOccurrencesOfString:@" " withString:@""];
+}
+
++ (NSString *)phoneFomatString:(NSString *)string {
+    NSString* aPhone = [string stringByReplacingOccurrencesOfString:@" " withString:@""];
+    if (aPhone.length != 11) {
+        return nil;
+    }
+    NSMutableString* str = [NSMutableString stringWithFormat:@"%@",aPhone];
+    [str insertString:@" " atIndex:3];
+    [str insertString:@" " atIndex:8];
+    
+    return str;
+}
+
 // 银行卡号转正常号 － 去除4位间的空格
 -(NSString *)segmentationToNormalNum
 {
     return [self stringByReplacingOccurrencesOfString:@" " withString:@""];
+}
+
++(NSString *)stringFomatMaskPhone:(NSString *)string{
+    
+    NSString* aPhone = [string stringByReplacingOccurrencesOfString:@" " withString:@""];
+    if (aPhone.length != 11) {
+        return nil;
+    }
+    NSRange range = NSMakeRange(4, 4);
+    NSString* subStr = [aPhone substringWithRange:range];
+    return [aPhone stringByReplacingOccurrencesOfString:subStr withString:@"****" options:NSCaseInsensitiveSearch range:range];
+    
+}
+
+@end
+
+
+@implementation NSString (QiNiu)
+
+
+- (NSString *)imgURIByOrginalSize:(CGSize)oSize {
+    //传进来的图片大小为一倍大小
+    if (CGSizeEqualToSize(CGSizeZero, oSize)) {
+        //        NSLog(@"waring ~~~~ size is zero");
+        NSAssert(1, @"size is zero");
+        return nil;
+    }
+    CGFloat f = [UIScreen mainScreen].scale;
+    CGFloat w = f * oSize.width;
+    CGFloat h = f * oSize.height;
+    
+    
+    //判断使用阿里云还是七牛
+    if ( self == nil || [self isKindOfClass:[NSString class]] == NO) {
+        return @"";
+    }
+    
+    //默认七牛
+    NSString* suffix = [NSString stringWithFormat:@"?imageView2/1/w/%d/h/%d",(int)w,(int)h];
+    
+    //使用阿里云
+    if ([self rangeOfString:@"aliyuncs.com"].location != NSNotFound) {
+        suffix = [NSString stringWithFormat:@"?x-oss-process=image/resize,m_mfit,h_%d,w_%d",(int)h,(int)w];
+    }
+    
+    return [NSString stringWithFormat:@"%@%@",self,suffix];
+    
+}
+
+- (NSString *)imgURIByFixedWidth:(CGFloat)width  {
+    
+    
+    
+    //判断使用阿里云还是七牛
+    if ( self == nil || [self isKindOfClass:[NSString class]] == NO) {
+        return @"";
+    }
+    
+    CGFloat f = [UIScreen mainScreen].scale;
+    int w = width * f;
+    
+    
+    //默认七牛
+    NSString* suffix = [NSString stringWithFormat:@"?imageView2/2/w/%d",(int)w];
+    
+    //使用阿里云
+    if ([self rangeOfString:@"aliyuncs.com"].location != NSNotFound) {
+        suffix = [NSString stringWithFormat:@"?x-oss-process=image/resize,w_%d",(int)w];
+    }
+    
+    return [NSString stringWithFormat:@"%@%@",self,suffix];
+}
+
+- (NSString *)imgURIByFixedHight:(CGFloat)height  {
+    
+    //判断使用阿里云还是七牛
+    if ( self == nil || [self isKindOfClass:[NSString class]] == NO) {
+        return @"";
+    }
+    
+    CGFloat f = [UIScreen mainScreen].scale;
+    int h = height * f;
+    
+    
+    //默认七牛
+    NSString* suffix = [NSString stringWithFormat:@"?imageView2/2/h/%d",(int)h];
+    
+    //使用阿里云
+    if ([self rangeOfString:@"aliyuncs.com"].location != NSNotFound) {
+        suffix = [NSString stringWithFormat:@"?x-oss-process=image/resize,h_%d",(int)h];
+    }
+    
+
+    return [NSString stringWithFormat:@"%@%@",self,suffix];
 }
 
 @end

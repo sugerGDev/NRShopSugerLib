@@ -82,7 +82,7 @@ static NSString *tempStr;
     }
     
     if ([string isEqualToString:@""]) {
-        [CYNotificationCenter postNotificationName:CYPasswordViewDeleteButtonClickNotification object:self];
+        [_passwordInputView deleteNumber];
         if (tempStr.length > 0) {   //  删除最后一个字符串
             NSString *lastStr = [tempStr substringToIndex:[tempStr length] - 1];
             tempStr = lastStr;
@@ -95,9 +95,7 @@ static NSString *tempStr;
             }
             tempStr = nil;
         }
-        NSMutableDictionary *userInfoDict = [NSMutableDictionary dictionary];
-        userInfoDict[CYPasswordViewKeyboardNumberKey] = string;
-        [CYNotificationCenter postNotificationName:CYPasswordViewNumberButtonClickNotification object:self userInfo:userInfoDict];
+        [_passwordInputView setNumber:string];
     }
     return YES;
 }

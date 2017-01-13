@@ -43,6 +43,7 @@
 
 - (void)drawInContext:(CGContextRef)context
 {
+    
     CGRect rect = self.bounds;
     CGPoint centerPoint = CGPointMake(rect.size.width / 2.0f, rect.size.height / 2.0f);
     CGFloat radius = MIN(rect.size.height, rect.size.width) / 2.0f;
@@ -123,7 +124,7 @@
 
 @end
 
-@interface DACircularProgressView ()
+@interface DACircularProgressView ()<CAAnimationDelegate>
 
 @end
 

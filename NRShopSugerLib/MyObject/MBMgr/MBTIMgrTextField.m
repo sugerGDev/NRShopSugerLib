@@ -7,6 +7,7 @@
 //
 
 #import "MBTIMgrTextField.h"
+#import "YYKit.h"
 
 
 @implementation MBTIMgrTextField
@@ -34,10 +35,12 @@
 }
 
 - (void)setupInit {
-    self.tintColor = [UIColor colorWithRed:0.929 green:0.102 blue:0.388 alpha:1.000];
+    self.tintColor = [UIColor colorWithHexString:@"ff2d4b"];
     [self setDelegate:self];
     [self setClearButtonMode:UITextFieldViewModeWhileEditing];
     [self setReturnKeyType:UIReturnKeyDone];
+    [self setTextColor:UIColorHex(595959)];
+    
     //在ip5 以下会出现崩溃的问题，改用通知实现
     //    [self addTarget:self action:@selector(textFieldValueChange:) forControlEvents:UIControlEventEditingChanged];
     //add textFieldValueChange: Observer
@@ -48,6 +51,7 @@
     self.limitNumber = @20;
     
 }
+
 
 - (void)dealloc {
     [self setDelegate:nil];
@@ -85,20 +89,25 @@
       shouldChangeCharactersInRange:(NSRange)range
                   replacementString:(NSString *)string {
     
+    //判断是否有Delegate
+    if ([_mbDelegate respondsToSelector:@selector(delegateTextFieldValueChange:)]) {
+        [_mbDelegate delegateTextFieldValueChange:textField];
+    }
+    
+    
     //不是输入手机号和银行卡号的时候...
     if (_isNeedBankNumSgmentation == NO
         && _isNeedPhoneNumSgmentation == NO) {
         return YES;
     }
     
-    //判断是否有Delegate
-    if ([_mbDelegate respondsToSelector:@selector(delegateTextFieldValueChange:)]) {
-        [_mbDelegate delegateTextFieldValueChange:textField];
-    }
     
     // 16位以内 (3个空格)
     NSString *str_segmentation = [NSString stringWithFormat:@"%@%@",textField.text,string];
-    if (textField.text.length < [self.limitNumber integerValue]) {
+    NSInteger nun =  [self.limitNumber integerValue];
+    NSInteger cur =  textField.text.length;
+    
+    if (cur < nun) {
         //只能输入数字
         NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789\b"] invertedSet];
         NSString *filterStr = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
@@ -149,16 +158,26 @@
 
 #pragma mark - Delegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:UIMBTIMgrTextFieldReturnSholdNotification object:self];
+  
     return [textField resignFirstResponder];
 }
 
--(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     return [self handlerSgmentationTextField:textField
                shouldChangeCharactersInRange:range
                            replacementString:string];
     
 }
 
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    
+    if ([_mbDelegate respondsToSelector:@selector(delegateTextFieldShouldBeginEditing:)]) {
+       return [_mbDelegate delegateTextFieldShouldBeginEditing:textField];
+    }
+    return YES;
+}
 
 
 #pragma mark - Vaild Mehtod
@@ -166,7 +185,9 @@
     return [self.text isChineseAlphabet] && (self.text.length != 0);
 }
 - (BOOL)isValidPhone {
-    return [self.text isValidMobileNumber] && (self.text.length != 0);
+    
+    NSString* str = [self.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    return [str isValidMobileNumber] && (str.length != 0);
 }
 - (BOOL)isEmpty{
     return [self.text isStringEmpty];
@@ -185,5 +206,7 @@
 }
 //-------------------设置指定边距大小-------------------
 
+
+NSString* const UIMBTIMgrTextFieldReturnSholdNotification = @"UIMBTIMgrTextFieldReturnSholdNotification";
 
 @end

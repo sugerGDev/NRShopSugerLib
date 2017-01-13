@@ -36,7 +36,7 @@
 /**
  *  图片Url数组
  */
-@property (nonatomic, copy) NSArray * imageUrls;
+@property (nonatomic, strong) NSArray * imageUrls;
 
 @property (nonatomic, weak) id<ZBannerViewDelegate> zbDelegate;
 

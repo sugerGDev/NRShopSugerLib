@@ -10,5 +10,6 @@
 
 @interface MLImagePickerHUD : UIView
 + (void)showMessage:(NSString *)message;
++ (void)showMessage:(NSString *)message atfer:(CGFloat)atfer;
 + (void)showMessage:(NSString *)message duration:(CGFloat)duration;
 @end

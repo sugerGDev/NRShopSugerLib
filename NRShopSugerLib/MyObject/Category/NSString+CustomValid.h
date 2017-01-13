@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreGraphics/CoreGraphics.h>
+#import <UIKit/UIKit.h>
 
 @interface NSString (CustomValid)
 
@@ -44,6 +46,20 @@
  */
 - (BOOL)isStringEmpty;
 
+/*!
+ *  @brief 11 位转成 13位带分割空格字符串
+ */
++(NSString *)stringFomatPhone:(NSString *)phone;
+/*!
+ *  @brief 13 位转成 11位手机号
+ */
++(NSString *)phoneFomatString:(NSString *)string;
+
+/*!
+ *  @brief 11 位转成 11位带掩码 字符串
+ */
++(NSString *)stringFomatMaskPhone:(NSString *)string;
+
 // 正常号转银行卡号 － 增加4位间的空格
 -(NSString *)normalNumToBankNum;
 // 正常号转手机号 － 增加4位间的空格
@@ -57,4 +73,15 @@
 ///判断text 最大长度 maxLength = 0 return YES
 - (BOOL)isValidMaxLength:(NSUInteger)maxLength WithRange:(NSRange)range replacementString:(NSString *)string;
 
+@end
+/*!
+ *  @brief 对图片进行剪裁URI 处理
+ */
+@interface NSString (QiNiu)
+//根据手机需要的图片尺寸对图片进行剪裁
+- (NSString *)imgURIByOrginalSize:(CGSize)oSize ;
+//根据手机需要的图片宽度对图片进行缩放
+- (NSString *)imgURIByFixedWidth:(CGFloat)width ;
+//根据手机需要的图片高度对图片进行缩放
+- (NSString *)imgURIByFixedHight:(CGFloat)height;
 @end

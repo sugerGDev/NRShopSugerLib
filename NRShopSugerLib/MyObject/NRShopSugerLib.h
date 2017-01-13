@@ -15,6 +15,7 @@
 #import "NSObject+CustomAdd.h" //NSObject分类
 #import "NSDate+CustomAdd.h"
 #import "NSString+CustomValid.h"
+#import "UILabel+CustomAdd.h"
 
 #import "JSWave.h" //波浪
 #import "CYPasswordView.h" //密码输入框

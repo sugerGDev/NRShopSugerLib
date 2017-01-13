@@ -12,7 +12,13 @@
 
 + (void)showMessage:(NSString *)message
 {
-    [self showMessage:message duration:0.5];
+    [self showMessage:message duration:0.7f];
+}
+
++ (void)showMessage:(NSString *)message atfer:(CGFloat)atfer{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(atfer * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self showMessage:message];
+    });
 }
 
 + (void)showMessage:(NSString *)message duration:(CGFloat)duration
@@ -37,25 +43,20 @@
     hud.frame = CGRectMake(0, 0, messageLbl.frame.size.width + 20, 60);
     hud.layer.cornerRadius = 3.0;
     hud.alpha = 0.0;
-    hud.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
-    hud.center = [UIApplication sharedApplication].keyWindow.center;
+    hud.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.7];
+    hud.center = CGPointMake([UIApplication sharedApplication].keyWindow.center.x, [UIApplication sharedApplication].keyWindow.center.y + 150);
     [[UIApplication sharedApplication].keyWindow addSubview:hud];
     
     [UIView animateWithDuration:duration animations:^{
         hud.alpha = 1.0;
     } completion:^(BOOL finished) {
-        sleep(0.2);
+        sleep(1.f);
         [UIView animateWithDuration:duration animations:^{
             hud.alpha = 0.0;
         } completion:^(BOOL finished) {
             [hud removeFromSuperview];
         }];
     }];
-}
-
-+ (void)startScaleBtnAnimation:(UIButton *)btn
-{
-    
 }
 
 @end

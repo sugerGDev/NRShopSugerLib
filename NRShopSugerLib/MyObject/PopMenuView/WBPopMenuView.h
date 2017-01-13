@@ -45,8 +45,11 @@ typedef void(^HandlerPopMenuViewBlock)(BOOL isShowing);
  *  @since <#version number#>
  */
 @property (nonatomic , copy) HandlerPopMenuViewBlock handlerPopMenuViewBlock;
+@property (nonatomic, copy) void(^action)(NSInteger index);
 - (void) hideMenu;
 - (void) showMenu;
+
+- (void)releaseMenu;
 
 @end
 

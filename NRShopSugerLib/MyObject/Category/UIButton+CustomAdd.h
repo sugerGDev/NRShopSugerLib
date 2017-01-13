@@ -62,7 +62,8 @@ typedef void(^TapActionBlock)( id tapSender);
  *
  *  @since version number
  */
-- (void)adjustImageWithTitleInOpposingSideByFont:(UIFont *)font;
+- (void)adjustImageWithTitleInOpposingSide;
+- (void)adjustImageWithTitleInOpposingSideBySize:(CGSize) size;
 @end
 
 /*!

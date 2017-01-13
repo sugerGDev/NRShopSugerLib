@@ -10,9 +10,14 @@
 #import "NSString+CustomValid.h"
 
 @class MBTIMgrTextField;
+//return按钮 触发通知
+
+UIKIT_EXTERN NSString *const UIMBTIMgrTextFieldReturnSholdNotification;
+
 @protocol MBTIMgrTextFieldDelegate <NSObject>
 @optional
 - (void)delegateTextFieldValueChange:(UITextField *)aTextField;
+- (BOOL)delegateTextFieldShouldBeginEditing:(UITextField *)textField;
 @end
 /*!
  * 重载 UITextField 控件， 自定义一些属性
@@ -21,7 +26,7 @@
 /*!
  *  限制字符字数，若默认不设置，限制20个字符
  */
-@property (nonatomic , assign, readwrite) NSNumber* limitNumber;
+@property (nonatomic , copy, readwrite) NSNumber* limitNumber;
 /*!
  *  @brief 是否需要手机号的分割功能
  *

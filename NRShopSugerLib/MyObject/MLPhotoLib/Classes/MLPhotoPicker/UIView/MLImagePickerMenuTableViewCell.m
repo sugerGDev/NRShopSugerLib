@@ -15,6 +15,7 @@
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     [self.tagImageView setImage:[UIImage imageNamed:@"MLImagePickerController.bundle/zl_star.png"]];
 }
 

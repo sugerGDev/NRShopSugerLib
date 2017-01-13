@@ -53,13 +53,13 @@
  
  */
 #pragma mark -- 弹出框选择Table
-#define M_TouchHiddenViewTag (1024)
 #define M_TableViewCellHeight (44.f)
 
 @interface WBPopMenuTable : UIView
 @property (nonatomic ,assign)ENWBPopMenuAlertType alertType;
 @property (nonatomic, strong)UIImageView* imgV;
 @property (nonatomic , strong) UITableView* table;
+
 @end
 
 @implementation WBPopMenuTable
@@ -131,12 +131,14 @@
 @property (nonatomic, assign) CGFloat menuWidth;
 @property (nonatomic, assign) CGFloat menuHeight;
 
-@property (nonatomic, copy) void(^action)(NSInteger index);
+
 @property (nonatomic, strong) WBPopMenuTable * tableView;
 
 @property (nonatomic, strong) WBTableViewDataSource * tableViewDataSource;
 @property (nonatomic, strong) WBTableViewDelegate   * tableViewDelegate;
 @property (nonatomic , strong)  UITapGestureRecognizer* tap;
+@property (nonatomic , strong) UIView* touchHiddenView;
+
 @end
 
 
@@ -186,7 +188,7 @@
                                      
                                      if (model.image) {
                                          tableViewCell.imageView.image = [UIImage imageNamed:model.image];
-                                         tableViewCell.textLabel.textAlignment = NSTextAlignmentLeft;
+                                         tableViewCell.textLabel.textAlignment = NSTextAlignmentCenter;
                                      }
                                      
                                      
@@ -237,11 +239,35 @@
 }
 
 
+- (void)releaseMenu {
+    
+    __weak typeof(self) wself = self;
+    
+    wself.action = nil;
+    wself.tableViewDataSource.configureCellBlock = nil;
+    [_tap removeAllActionBlocks];
+    
+    if (_handlerPopMenuViewBlock) _handlerPopMenuViewBlock(NO);
+    _handlerPopMenuViewBlock = nil;
+    
+    wself.tableView.table.delegate = nil;
+    wself.tableView.table.dataSource = nil;
+    
+    [self removeFromSuperview];
+    
+    [_touchHiddenView removeFromSuperview];
+    
+    
+    
+    
+}
 - (void) hideMenu {
     
     __weak typeof(self) wself = self;
+    
     wself.action = nil;
     wself.tableViewDataSource.configureCellBlock = nil;
+    [_tap removeAllActionBlocks];
     
     if (_handlerPopMenuViewBlock) _handlerPopMenuViewBlock(NO);
     _handlerPopMenuViewBlock = nil;
@@ -254,19 +280,18 @@
         
     } completion:^(BOOL finished) {
         
-        UIView* touchHiddenView =  [[UIApplication sharedApplication].keyWindow viewWithTag:M_TouchHiddenViewTag];
-        [touchHiddenView removeFromSuperview];
+        [wself.touchHiddenView removeFromSuperview];
     }];
 }
 
 - (void)showMenu {
     
     if (_handlerPopMenuViewBlock) _handlerPopMenuViewBlock(YES);
+    [_touchHiddenView removeFromSuperview];
     
     CGRect rect = [UIScreen mainScreen].bounds;
-    UIView* touchHiddenView = [[UIView alloc]initWithFrame:rect];
-    touchHiddenView.tag = M_TouchHiddenViewTag;
-    [touchHiddenView addSubview:self];
+    _touchHiddenView = [[UIView alloc]initWithFrame:rect];
+    [_touchHiddenView addSubview:self];
     
     __weak typeof(self) wself = self;
     _tap = [[UITapGestureRecognizer alloc]initWithActionBlock:^(UITapGestureRecognizer* sender) {
@@ -274,8 +299,8 @@
         [wself isTapCellsByTapGesture:sender];
         [wself hideMenu];
     }];
-    [touchHiddenView addGestureRecognizer:_tap];
-    [[UIApplication sharedApplication].keyWindow addSubview:touchHiddenView];
+    [_touchHiddenView addGestureRecognizer:_tap];
+    [[UIApplication sharedApplication].keyWindow addSubview:_touchHiddenView];
 }
 #pragma mark - 计算是否点击到Cell
 -(void)isTapCellsByTapGesture:(UITapGestureRecognizer *)tap {

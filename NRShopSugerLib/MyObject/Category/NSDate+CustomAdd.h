@@ -11,4 +11,7 @@
 @interface NSDate (CustomAdd)
 
 + (NSDate *)dateWithSimpleFormatString:(NSString *)dateString ;
+- (NSString *)weekDayStr;
+- (NSString *)monthDayStr;
+
 @end

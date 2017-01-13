@@ -11,7 +11,7 @@
 #import <Masonry/Masonry.h>
 
 // 图片滚动时间间隔
-#define kImageScrollTimeInterval 3.0
+#define kImageScrollTimeInterval 10.0
 
 
 typedef NS_ENUM(NSUInteger, ZBannerScrollType) {
@@ -31,9 +31,9 @@ typedef NS_ENUM(NSUInteger, ZBannerScrollType) {
 @property (nonatomic, assign) NSInteger currentImageIndex;
 
 // 滚动时显示的Image
-@property (nonatomic, weak) UIImageView * reuseImageView;
+@property (nonatomic, weak) YYAnimatedImageView * reuseImageView;
 // 静止时候显示的Image
-@property (nonatomic, weak) UIImageView * displayImageView;
+@property (nonatomic, weak) YYAnimatedImageView * displayImageView;
 // 滚动状态
 @property (nonatomic, assign) ZBannerScrollType scrollType;
 
@@ -116,19 +116,25 @@ typedef NS_ENUM(NSUInteger, ZBannerScrollType) {
     }];
     
     
-    UIImageView * displayImageView = [[UIImageView alloc] init];
+    YYAnimatedImageView * displayImageView = [YYAnimatedImageView new];
     [self.scrollView addSubview:displayImageView];
     self.displayImageView = displayImageView;
     displayImageView.userInteractionEnabled = YES;
     UITapGestureRecognizer * tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageClick)];
     [displayImageView addGestureRecognizer:tgr];
+    displayImageView.layer.masksToBounds = YES;
     
-    UIImageView * reuseImageView = [[UIImageView alloc] init];
+    YYAnimatedImageView * reuseImageView = [YYAnimatedImageView new];
     [self.scrollView addSubview:reuseImageView];
     self.reuseImageView = reuseImageView;
+    reuseImageView.layer.masksToBounds = YES;
+    
     
     displayImageView.backgroundColor = [UIColor colorWithWhite:0.667 alpha:0.500];
     reuseImageView.backgroundColor = [UIColor colorWithWhite:0.667 alpha:0.500];
+    
+    displayImageView.contentMode = UIViewContentModeScaleAspectFill;
+    reuseImageView.contentMode = UIViewContentModeScaleAspectFill;
     
     self.isAutoScrollView = YES; //默认开启自动滚动
 }
@@ -145,6 +151,14 @@ typedef NS_ENUM(NSUInteger, ZBannerScrollType) {
     
     _imageUrls = imageUrls;
     self.pageControl.numberOfPages = imageUrls.count;
+
+    //只有一张的时候停止滚动，并且防止触摸、
+    BOOL isScroll = !(imageUrls.count == 1);
+    
+    [self.scrollView setScrollEnabled:isScroll];
+    self.isAutoScrollView = isScroll;
+    if(!isScroll)[_pageControl removeFromSuperview];
+    
     
     [self loadDisplayImage];
 }
@@ -154,7 +168,18 @@ typedef NS_ENUM(NSUInteger, ZBannerScrollType) {
 - (void)loadDisplayImage {
     
     NSString* urlStr = self.imageUrls[self.currentImageIndex ];
-    [self.displayImageView setImageURL:[NSURL URLWithString:urlStr]];
+    NSURL* url = [NSURL URLWithString:urlStr];
+    
+    BOOL fileExist = ([urlStr rangeOfString:@"http"].location != NSNotFound);
+    if (fileExist == NO) {
+        
+        self.displayImageView.image = [UIImage imageNamed:urlStr];
+        
+    }else{
+        
+        UIImage* img = [UIImage imageNamed:@"placeholder_banner"];
+        [self.displayImageView setImageWithURL:url  placeholder:img];
+    }
     
     [self.scrollView setContentOffset:CGPointMake(self.scrollView.frame.size.width, 0)];
     self.pageControl.currentPage = self.currentImageIndex;

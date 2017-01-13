@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
 
 
   s.name         = "NRShopSugerLib"
-  s.version      = "1.0.3"
+  s.version      = "1.0.4"
   s.summary      = "the part of NRCGlobalShop lib"
 
   s.homepage     = "https://github.com/sugerGDev/NRShopSugerLib"
@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
 
-  s.frameworks = "UIKit","Foundation","Photos","QuartzCore","AssetsLibrary"
+  s.frameworks = "UIKit","Foundation","Photos","QuartzCore","AssetsLibrary","CoreGraphics"
   s.resources  = 'NRShopSugerLib/MyObject/Resources/*.{png,xib,nib,bundle,storyboard}'
 
     s.dependency 'Masonry'

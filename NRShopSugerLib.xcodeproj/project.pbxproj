@@ -21,6 +21,7 @@
 		997FFA7B1D6D41770028C221 /* NSString+CustomValid.m in Sources */ = {isa = PBXBuildFile; fileRef = 997FFA7A1D6D41770028C221 /* NSString+CustomValid.m */; };
 		997FFA7F1D6D42680028C221 /* MBTIMgrTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 997FFA7E1D6D42680028C221 /* MBTIMgrTextField.m */; };
 		99DCD47C1D712813001205D1 /* NSObject+CustomAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DCD47B1D712813001205D1 /* NSObject+CustomAdd.m */; };
+		9B1D588C1E298ED100803234 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B1D588B1E298ED100803234 /* CoreGraphics.framework */; };
 		9B34C4011D8CE56B008B005A /* CYConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B34C3F91D8CE56B008B005A /* CYConst.m */; };
 		9B34C4021D8CE56B008B005A /* CYPasswordInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B34C3FB1D8CE56B008B005A /* CYPasswordInputView.m */; };
 		9B34C4041D8CE56B008B005A /* CYPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B34C3FE1D8CE56B008B005A /* CYPasswordView.m */; };
@@ -100,6 +101,8 @@
 		997FFA7E1D6D42680028C221 /* MBTIMgrTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBTIMgrTextField.m; sourceTree = "<group>"; };
 		99DCD47A1D712813001205D1 /* NSObject+CustomAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CustomAdd.h"; sourceTree = "<group>"; };
 		99DCD47B1D712813001205D1 /* NSObject+CustomAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CustomAdd.m"; sourceTree = "<group>"; };
+		9B1D58891E298EA300803234 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9B1D588B1E298ED100803234 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		9B34C3F81D8CE56B008B005A /* CYConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYConst.h; sourceTree = "<group>"; };
 		9B34C3F91D8CE56B008B005A /* CYConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYConst.m; sourceTree = "<group>"; };
 		9B34C3FA1D8CE56B008B005A /* CYPasswordInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYPasswordInputView.h; sourceTree = "<group>"; };
@@ -207,6 +210,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B1D588C1E298ED100803234 /* CoreGraphics.framework in Frameworks */,
 				0012DC49789395C1160815BE /* libPods-NRShopSugerLib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -556,6 +560,8 @@
 		F64C7D38C2997DD12DF6FB89 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9B1D588B1E298ED100803234 /* CoreGraphics.framework */,
+				9B1D58891E298EA300803234 /* Foundation.framework */,
 				062F7F1A14799916CB5C2F14 /* libPods-NRShopSugerLib.a */,
 			);
 			name = Frameworks;
@@ -664,7 +670,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		ACD37163AFEE3152225AF4B8 /* [CP] Embed Pods Frameworks */ = {

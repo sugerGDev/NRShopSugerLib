@@ -29,13 +29,36 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = [UIColor clearColor];
-        /** 注册通知 */
-        [self setupNotification];
-        /** 添加子控件 */
-        [self setupSubViews];
+        [self setupInit];
     }
     return self;
+}
+
+- (instancetype)init {
+    if (self = [super init]) {
+        [self setupInit];
+    }
+    return self;
+}
+
+- (void) setupInit{
+    self.isAddCloseBtn = YES;
+    self.isShowBackgroundImage = YES;
+    self.backgroundColor = [UIColor clearColor];
+    /** 注册通知 */
+    [self setupNotification];
+    /** 添加子控件 */
+    [self setupSubViews];
+}
+
+-(void)setIsAddCloseBtn:(BOOL)isAddCloseBtn {
+    //移除关闭按钮
+    if (NO == isAddCloseBtn) {
+        
+        [self.btnClose removeTarget:self action:@selector(btnClose_Click:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [self.btnClose removeFromSuperview];
+    }
 }
 
 - (void)layoutSubviews
@@ -82,10 +105,7 @@
 
 /** 注册通知 */
 - (void)setupNotification {
-    // 用户按下删除键通知
-    [CYNotificationCenter addObserver:self selector:@selector(delete) name:CYPasswordViewDeleteButtonClickNotification object:nil];
-    // 用户按下数字键通知
-    [CYNotificationCenter addObserver:self selector:@selector(number:) name:CYPasswordViewNumberButtonClickNotification object:nil];
+  
     [CYNotificationCenter addObserver:self selector:@selector(disEnalbeCloseButton:) name:CYPasswordViewDisEnabledUserInteractionNotification object:nil];
     [CYNotificationCenter addObserver:self selector:@selector(disEnalbeCloseButton:) name:CYPasswordViewEnabledUserInteractionNotification object:nil];
 }
@@ -108,10 +128,13 @@
 
 - (void)drawRect:(CGRect)rect {
     // 画图
-    UIImage *imgBackground = [UIImage imageNamed:CYPasswordViewSrcName(@"password_background")];
+    if (_isShowBackgroundImage) {
+        UIImage *imgBackground = [UIImage imageNamed:CYPasswordViewSrcName(@"password_background")];
+        [imgBackground drawInRect:rect];
+    }
+    
     UIImage *imgTextfield = [UIImage imageNamed:CYPasswordViewSrcName(@"password_textfield")];
 
-    [imgBackground drawInRect:rect];
 
     CGFloat textfieldY = CYPasswordViewTitleHeight + CYPasswordViewTextFieldMarginTop;
     CGFloat textfieldW = CYPasswordViewTextFieldWidth;
@@ -130,11 +153,14 @@
     CGFloat titleY = (CYPasswordViewTitleHeight - titleH) * 0.5;
     CGRect titleRect = CGRectMake(titleX, titleY, titleW, titleH);
 
-    NSMutableDictionary *attr = [NSMutableDictionary dictionary];
-    attr[NSFontAttributeName] = CYFontB(18);
-    attr[NSForegroundColorAttributeName] = CYColor(102, 102, 102);
-    [title drawInRect:titleRect withAttributes:attr];
+    if (_isShowBackgroundImage) {
+        NSMutableDictionary *attr = [NSMutableDictionary dictionary];
+        attr[NSFontAttributeName] = CYFontB(18);
+        attr[NSForegroundColorAttributeName] = CYColor(102, 102, 102);
+        [title drawInRect:titleRect withAttributes:attr];
 
+    }
+    
     // 画点
     UIImage *pointImage = [UIImage imageNamed:CYPasswordViewSrcName(@"password_point")];
     CGFloat pointW = CYPasswordViewPointnWH;
@@ -159,17 +185,27 @@
     return _inputNumArray;
 }
 
+- (NSString *)inputStr {
+    NSMutableString* str = [NSMutableString string];
+    for (NSString* i in self.inputNumArray) {
+        [str appendString:i];
+    }
+    return str;
+}
 #pragma mark  - 私有方法
 // 响应用户按下删除键事件
-- (void)delete {
+- (void)deleteNumber {
     [self.inputNumArray removeLastObject];
     [self setNeedsDisplay];
 }
 
+- (void)deleteAll {
+    [self.inputNumArray removeAllObjects];
+    [self setNeedsDisplay];
+}
+
 // 响应用户按下数字键事件
-- (void)number:(NSNotification *)note {
-    NSDictionary *userInfo = note.userInfo;
-    NSString *numObj = userInfo[CYPasswordViewKeyboardNumberKey];
+- (void)setNumber:(NSString *)numObj {
     if (numObj.length >= kNumCount) return;
     [self.inputNumArray addObject:numObj];
     [self setNeedsDisplay];

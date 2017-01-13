@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <YYKit/YYKit.h>
 
 #define M_SmallFont   [UIFont systemFontOfSize:12]
 #define M_MediumlFont [UIFont systemFontOfSize:14]
+#define M_IntervalFont [UIFont systemFontOfSize:20]
 #define M_BigFont     [UIFont systemFontOfSize:30]
 //BigFont:(UIFont *)bFont 参数为预留，如需时候再使用
 @interface UILabel (CustomAdd)
@@ -30,8 +32,12 @@
  *
  *  @since <#version number#>
  */
-- (void)decoratePriceFromPrice:(NSString *)price atOriginal:(NSString *)oPrice BigFont:(UIFont *)bFont
-                       MedFont:(UIFont *)mFont SmlFont:(UIFont *)sFont;
+- (void)decoratePriceFromPrice:(NSString *)price
+                    atOriginal:(NSString *)oPrice
+                       BigFont:(UIFont *)bFont
+                       MedFont:(UIFont *)mFont
+                       SmlFont:(UIFont *)sFont;
+
 
 /*!
  *  @brief 对价格 Label 修饰
@@ -46,4 +52,25 @@
                     atOriginal:(NSString *)oPrice  BigFont:(UIFont *)bFont
                        MedFont:(UIFont *)mFont SmlFont:(UIFont *)sFont;
 
+
+
+
+
+- (void)decorateDetailPriceFromPrice:(NSString *)price
+                          atOriginal:(NSString *)oPrice
+                             MedFont:(UIFont *)mFont MedTxtColor:(UIColor *)mTxtColor
+                             SmlFont:(UIFont *)sFont SmlTxtColor:(UIColor *)sTxtColor;
+
+
+
+
+- (void)decorateSalePriceFromPrice:(NSString *)price
+                        atOriginal:(NSString *)oPrice BigFont:(UIFont *)bFont
+                           MedFont:(UIFont *)mFont SmlFont:(UIFont *)sFont;
+
 @end
+
+
+
+
+

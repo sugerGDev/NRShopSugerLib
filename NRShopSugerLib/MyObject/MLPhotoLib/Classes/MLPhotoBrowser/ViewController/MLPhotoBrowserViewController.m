@@ -12,9 +12,11 @@
 #import "MLPhotoPickerManager.h"
 #import "MLImagePickerHUD.h"
 #import "MLPhotoRect.h"
+#import "YYKit.h"
+
 
 @interface MLPhotoBrowserViewController () <UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
-@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, weak) UICollectionView *collectionView;
 @property (nonatomic, strong) UIButton *titleButton;
 @property (nonatomic, strong) UIButton *nextButton;
 @property (nonatomic, assign) BOOL statusBarHiddenFlag;
@@ -23,17 +25,45 @@
 
 @implementation MLPhotoBrowserViewController
 
+- (void)displayForVC:(__weak UIViewController *)viewController
+{
+    if (self.photos.count == 0 || self.curPage > self.photos.count)
+    {
+        NSLog(@"photos is empty");
+        return;
+    }
+    
+    self.viewController = viewController;
+    if (viewController.navigationController == nil) {
+        MLNavigationViewController *navigationVC = [[MLNavigationViewController alloc] initWithRootViewController:self];
+        [viewController presentViewController:navigationVC animated:YES completion:nil];
+    } else {
+        [viewController.navigationController pushViewController:self animated:YES];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.automaticallyAdjustsScrollViewInsets = NO;
+    [self.view setBackgroundColor:UIColorHex(333333)];
+    [self setAutomaticallyAdjustsScrollViewInsets:NO];
     
     [self addNavigationBarTitleView];
     [self addNavigationBarRightView];
     [self addCollectionView];
     [self addNotification];
     [self updateTitleView];
+}
+
+- (void)dealloc
+{
+    if ([NSThread isMainThread]) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self];
+    } else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] removeObserver:self];
+        });
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -94,11 +124,14 @@
         flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         flowLayout.minimumLineSpacing = 0;
         flowLayout.minimumInteritemSpacing = 0;
-        UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
+    
+        CGRect rect = CGRectMake(0, -20, self.view.width, self.view.height);;
+        UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:rect collectionViewLayout:flowLayout];
         collectionView.pagingEnabled = YES;
         collectionView.backgroundColor = [UIColor clearColor];
         collectionView.dataSource = self;
         collectionView.delegate = self;
+        collectionView.bounces = NO;
         collectionView.showsVerticalScrollIndicator = NO;
         collectionView.showsHorizontalScrollIndicator = NO;
         [collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([MLPhotoBrowserCollectionCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([MLPhotoBrowserCollectionCell class])];
@@ -117,7 +150,7 @@
         UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
         rightButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [rightButton setTitle:@"下一步" forState:UIControlStateNormal];
-        [rightButton setBackgroundColor:[UIColor orangeColor]];
+        [rightButton setBackgroundColor:[UIColor colorWithHexString:@"ff2d4b"]];
         [[rightButton layer] setCornerRadius:2.0];
         [rightButton setFrame:CGRectMake(self.view.frame.size.width - 75, 8, 60, 30)];
         [rightButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
@@ -149,29 +182,14 @@
 
 - (void)nextBtnClick
 {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored"-Wundeclared-selector"
     [self.navigationController popViewControllerAnimated:NO];
-    if ([self.viewController canPerformAction:@selector(tappendDoneBtn) withSender:nil]){
-        [self.viewController performSelector:@selector(tappendDoneBtn) withObject:nil];
+    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+    if ([self.viewController respondsToSelector:@selector(tappendDoneBtn)]) {
+        [self.viewController performSelector:@selector(tappendDoneBtn)];
     }
 #pragma clang diagnostic pop
-}
-
-- (void)displayForVC:(__weak UIViewController *)viewController
-{
-    if (self.photos.count == 0 || self.curPage > self.photos.count) {
-        NSLog(@"photos is empty");
-        return;
-    }
-    
-    self.viewController = viewController;
-    if (viewController.navigationController == nil) {
-        MLNavigationViewController *navigationVC = [[MLNavigationViewController alloc] initWithRootViewController:self];
-        [viewController presentViewController:navigationVC animated:YES completion:nil];
-    } else {
-        [viewController.navigationController pushViewController:self animated:YES];
-    }
 }
 
 #pragma mark - <UICollectionViewDataSource/UICollectionViewDelegate>
@@ -190,11 +208,11 @@
     MLPhotoBrowserCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([MLPhotoBrowserCollectionCell class]) forIndexPath:indexPath];
     cell.photo = [self.photos objectAtIndex:indexPath.item];
     cell.editMode = self.editMode;
-    __weak typeof(self)weakSelf = self;
-    cell.didTapBlock = ^{
-        [weakSelf setStatusBarHidden:!weakSelf.navigationController.navigationBar.isHidden];
-        [weakSelf.navigationController setNavigationBarHidden:!weakSelf.navigationController.navigationBar.isHidden animated:YES];
-    };
+//    __weak typeof(self)weakSelf = self;
+//    cell.didTapBlock = ^{
+//        [weakSelf setStatusBarHidden:!weakSelf.navigationController.navigationBar.isHidden];
+//        [weakSelf.navigationController setNavigationBarHidden:!weakSelf.navigationController.navigationBar.isHidden animated:YES];
+//    };
     return cell;
 }
 
@@ -218,7 +236,7 @@
     }
 }
 
-#pragma mark - update
+#pragma mark - Update
 - (void)updateTitleView
 {
     NSString *title = [NSString stringWithFormat:@"%@/%@",@(self.curPage+1),@(self.photos.count)];
@@ -228,16 +246,16 @@
 
 - (void)updateNextButton
 {
-    NSString *nextStr = @"下一步";
+    NSString *nextStr = @"完成";
     if ([MLPhotoPickerManager manager].selectsUrls.count > 0) {
-        nextStr = [NSString stringWithFormat:@"下一步(%lu)",(unsigned long)[MLPhotoPickerManager manager].selectsUrls.count];
+        nextStr = [NSString stringWithFormat:@"完成(%lu)",(unsigned long)[MLPhotoPickerManager manager].selectsUrls.count];
     }
     CGSize nextStrSize = [nextStr boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:nil context:nil].size;
     [self.nextButton setBounds:CGRectMake(0, 0, nextStrSize.width + 20, 30)];
     [self.nextButton setTitle:nextStr forState:UIControlStateNormal];
 }
 
-#pragma mark - reload
+#pragma mark - Reload
 - (void)reloadData
 {
     [self.collectionView reloadData];

@@ -43,6 +43,13 @@ static const int block_key;
 #pragma mark - Publice
 
 - (void)addTapActionBlock:(TapActionBlock)aBlock {
+    
+    NSMutableArray *targets = [self _yy_allUIButtonBlockTargets];
+    //一个tap block  跟着一个对象
+    if (targets.count != 0) {
+        return;
+    }
+    
     //get targets
     _YYUIButtonBlockTarget *target = [[_YYUIButtonBlockTarget alloc]initWithBlock:aBlock];
     //add target action
@@ -50,7 +57,6 @@ static const int block_key;
              action:@selector(invoke:)
    forControlEvents:UIControlEventTouchUpInside];
     //save target
-    NSMutableArray *targets = [self _yy_allUIButtonBlockTargets];
     [targets addObject:target];
     
 }
@@ -115,13 +121,21 @@ static const int block_key;
     return CGSizeMake(w, h );
 }
 
-- (void)adjustImageWithTitleInOpposingSideByFont:(UIFont *)font{
+- (void)adjustImageWithTitleInOpposingSide{
     
-    //    NSString* title = [self titleForState:UIControlStateNormal];
-    //    UIImage* img = [self imageForState:UIControlStateNormal];
+    UIImage* img = [self imageForState:UIControlStateNormal];
     
-    self.imageEdgeInsets = UIEdgeInsetsMake(0, self.frame.size.width - 5, 0, 0);
-    self.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10);
+    self.imageEdgeInsets = UIEdgeInsetsMake(0, self.frame.size.width - img.size.width, 0, 0);
+    self.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, img.size.width + 5);
+    
+    self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+}
+
+- (void)adjustImageWithTitleInOpposingSideBySize:(CGSize) size {
+    
+    self.imageEdgeInsets = UIEdgeInsetsMake(0, size.width , 0, 0);
+    UIImage* img = [self imageForState:UIControlStateNormal];
+    self.titleEdgeInsets = UIEdgeInsetsMake(0, -img.size.width, 0, img.size.width);
     
     self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
 }
