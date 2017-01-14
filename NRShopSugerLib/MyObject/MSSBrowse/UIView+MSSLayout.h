@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <YYKit.h>
+#import <YYKit/YYKit.h>
+
 @interface UIView (MSSLayout)
 
 
