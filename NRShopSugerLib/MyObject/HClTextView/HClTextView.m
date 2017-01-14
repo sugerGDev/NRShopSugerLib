@@ -7,7 +7,6 @@
 //
 
 #import "HClTextView.h"
-#import <Masonry.h>
 
 
 @implementation HClTextView

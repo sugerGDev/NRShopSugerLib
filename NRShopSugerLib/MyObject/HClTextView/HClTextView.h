@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <YYKit.h>
+#import <Masonry/Masonry.h>
+#import <YYKit/YYKit.h>
 
 #define kWinsize [[UIScreen mainScreen] bounds].size
 
