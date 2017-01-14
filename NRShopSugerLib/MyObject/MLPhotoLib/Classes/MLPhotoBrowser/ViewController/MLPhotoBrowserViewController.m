@@ -12,7 +12,7 @@
 #import "MLPhotoPickerManager.h"
 #import "MLImagePickerHUD.h"
 #import "MLPhotoRect.h"
-#import "YYKit.h"
+#import  <YYKit/YYKit.h>
 
 
 @interface MLPhotoBrowserViewController () <UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>

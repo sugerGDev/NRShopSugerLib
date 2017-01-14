@@ -7,7 +7,7 @@
 //
 
 #import "MBTIMgrTextField.h"
-#import "YYKit.h"
+#import  <YYKit/YYKit.h>
 
 
 @implementation MBTIMgrTextField

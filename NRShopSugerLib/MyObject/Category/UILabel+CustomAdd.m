@@ -7,7 +7,7 @@
 //
 
 #import "UILabel+CustomAdd.h"
-#import "YYKit.h"
+#import  <YYKit/YYKit.h>
 
 @implementation UILabel (CustomAdd)
 - (void)decoratePriceFromPrice:(NSString *)price  BigFont:(UIFont *)bFont

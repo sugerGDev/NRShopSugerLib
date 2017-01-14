@@ -9,7 +9,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UUChartConst.h"
-#import <YYKit.h>
+#import  <YYKit/YYKit.h>
 
 @interface UULineChart : UIView
 

@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-#import <MJRefresh.h>
-#import <YYKit.h>
+#import <MJRefresh/MJRefresh.h>
+#import <YYKit/YYKit.h>
+
 
 //刷新类别
 typedef NS_ENUM(NSInteger, NRCRefreshType) {
