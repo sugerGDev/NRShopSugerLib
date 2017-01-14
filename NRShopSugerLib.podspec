@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
 
 
   s.name         = "NRShopSugerLib"
-  s.version      = "1.0.4"
+  s.version      = "1.0.5"
   s.summary      = "the part of NRCGlobalShop lib"
 
   s.homepage     = "https://github.com/sugerGDev/NRShopSugerLib"
@@ -36,6 +36,7 @@ Pod::Spec.new do |s|
 
     s.dependency 'Masonry'
     s.dependency 'YYKit'
+    s.dependency 'MJRefresh'
 
 
 end
