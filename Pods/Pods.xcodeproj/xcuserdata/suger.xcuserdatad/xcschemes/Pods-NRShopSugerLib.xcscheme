@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '78707FC4C8443B741AFBABAA738D3B37'
+               BlueprintIdentifier = 'C1554B1100AA714C8BF43B896E070089'
                BlueprintName = 'Pods-NRShopSugerLib'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-NRShopSugerLib.a'>

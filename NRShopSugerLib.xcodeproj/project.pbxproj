@@ -22,6 +22,10 @@
 		997FFA7F1D6D42680028C221 /* MBTIMgrTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 997FFA7E1D6D42680028C221 /* MBTIMgrTextField.m */; };
 		99DCD47C1D712813001205D1 /* NSObject+CustomAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DCD47B1D712813001205D1 /* NSObject+CustomAdd.m */; };
 		9B1D588C1E298ED100803234 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B1D588B1E298ED100803234 /* CoreGraphics.framework */; };
+		9B1D58A41E29A64C00803234 /* UIImage+CustomAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B1D589D1E29A64C00803234 /* UIImage+CustomAdd.m */; };
+		9B1D58A51E29A64C00803234 /* UIScrollView+CustomAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B1D589F1E29A64C00803234 /* UIScrollView+CustomAdd.m */; };
+		9B1D58A61E29A64C00803234 /* UIViewController+KeyboardAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B1D58A11E29A64C00803234 /* UIViewController+KeyboardAnimation.m */; };
+		9B1D58A71E29A64C00803234 /* YYTextLayout+CustomAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B1D58A31E29A64C00803234 /* YYTextLayout+CustomAdd.m */; };
 		9B34C4011D8CE56B008B005A /* CYConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B34C3F91D8CE56B008B005A /* CYConst.m */; };
 		9B34C4021D8CE56B008B005A /* CYPasswordInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B34C3FB1D8CE56B008B005A /* CYPasswordInputView.m */; };
 		9B34C4041D8CE56B008B005A /* CYPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B34C3FE1D8CE56B008B005A /* CYPasswordView.m */; };
@@ -103,6 +107,14 @@
 		99DCD47B1D712813001205D1 /* NSObject+CustomAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CustomAdd.m"; sourceTree = "<group>"; };
 		9B1D58891E298EA300803234 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9B1D588B1E298ED100803234 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9B1D589C1E29A64C00803234 /* UIImage+CustomAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+CustomAdd.h"; sourceTree = "<group>"; };
+		9B1D589D1E29A64C00803234 /* UIImage+CustomAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CustomAdd.m"; sourceTree = "<group>"; };
+		9B1D589E1E29A64C00803234 /* UIScrollView+CustomAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+CustomAdd.h"; sourceTree = "<group>"; };
+		9B1D589F1E29A64C00803234 /* UIScrollView+CustomAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+CustomAdd.m"; sourceTree = "<group>"; };
+		9B1D58A01E29A64C00803234 /* UIViewController+KeyboardAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+KeyboardAnimation.h"; sourceTree = "<group>"; };
+		9B1D58A11E29A64C00803234 /* UIViewController+KeyboardAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+KeyboardAnimation.m"; sourceTree = "<group>"; };
+		9B1D58A21E29A64C00803234 /* YYTextLayout+CustomAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YYTextLayout+CustomAdd.h"; sourceTree = "<group>"; };
+		9B1D58A31E29A64C00803234 /* YYTextLayout+CustomAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YYTextLayout+CustomAdd.m"; sourceTree = "<group>"; };
 		9B34C3F81D8CE56B008B005A /* CYConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYConst.h; sourceTree = "<group>"; };
 		9B34C3F91D8CE56B008B005A /* CYConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYConst.m; sourceTree = "<group>"; };
 		9B34C3FA1D8CE56B008B005A /* CYPasswordInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYPasswordInputView.h; sourceTree = "<group>"; };
@@ -303,6 +315,14 @@
 		991645471D6C4E27009EC7AE /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				9B1D589C1E29A64C00803234 /* UIImage+CustomAdd.h */,
+				9B1D589D1E29A64C00803234 /* UIImage+CustomAdd.m */,
+				9B1D589E1E29A64C00803234 /* UIScrollView+CustomAdd.h */,
+				9B1D589F1E29A64C00803234 /* UIScrollView+CustomAdd.m */,
+				9B1D58A01E29A64C00803234 /* UIViewController+KeyboardAnimation.h */,
+				9B1D58A11E29A64C00803234 /* UIViewController+KeyboardAnimation.m */,
+				9B1D58A21E29A64C00803234 /* YYTextLayout+CustomAdd.h */,
+				9B1D58A31E29A64C00803234 /* YYTextLayout+CustomAdd.m */,
 				9B34C40F1D8CE622008B005A /* UILabel+CustomAdd.h */,
 				9B34C4101D8CE622008B005A /* UILabel+CustomAdd.m */,
 				9B34C40C1D8CE5FE008B005A /* NSDate+CustomAdd.h */,
@@ -700,6 +720,7 @@
 				9B8B36521D9129E8005DE55C /* MLPhoto.m in Sources */,
 				9B8B365D1D9129E8005DE55C /* MLImagePickerMenuTableViewCell.m in Sources */,
 				9B8B36581D9129E8005DE55C /* MLPhotoPickerBrowserPhotoView.m in Sources */,
+				9B1D58A71E29A64C00803234 /* YYTextLayout+CustomAdd.m in Sources */,
 				9B8B36601D9129E8005DE55C /* UIButton+Animation.m in Sources */,
 				9B8B36651D9129E8005DE55C /* NSData+ImageContentType.m in Sources */,
 				9B8B364E1D9129E8005DE55C /* MLPhotoAsset.m in Sources */,
@@ -732,16 +753,19 @@
 				9B8B36631D9129E8005DE55C /* DACircularProgressView.m in Sources */,
 				9B34C4021D8CE56B008B005A /* CYPasswordInputView.m in Sources */,
 				9B8B366C1D9129E8005DE55C /* SDWebImagePrefetcher.m in Sources */,
+				9B1D58A41E29A64C00803234 /* UIImage+CustomAdd.m in Sources */,
 				9B8B36571D9129E8005DE55C /* MLPhotoPickerBrowserPhotoScrollView.m in Sources */,
 				9B34C41B1D8CE62B008B005A /* WBTableViewDelegate.m in Sources */,
 				9B8B36701D9129E8005DE55C /* UIImageView+HighlightedWebCache.m in Sources */,
 				9B8B36641D9129E8005DE55C /* DALabeledCircularProgressView.m in Sources */,
+				9B1D58A51E29A64C00803234 /* UIScrollView+CustomAdd.m in Sources */,
 				9B8B366E1D9129E8005DE55C /* UIImage+GIF.m in Sources */,
 				9B34C4051D8CE56B008B005A /* UIView+Extension.m in Sources */,
 				91471A9E1D634A7D006067C8 /* AppDelegate.m in Sources */,
 				9B8B36711D9129E8005DE55C /* UIImageView+WebCache.m in Sources */,
 				9B8B36501D9129E8005DE55C /* MLPhotoPickerManager.m in Sources */,
 				9B34C4011D8CE56B008B005A /* CYConst.m in Sources */,
+				9B1D58A61E29A64C00803234 /* UIViewController+KeyboardAnimation.m in Sources */,
 				91471A9B1D634A7D006067C8 /* main.m in Sources */,
 				9B8B366A1D9129E8005DE55C /* SDWebImageDownloaderOperation.m in Sources */,
 				9B8B36561D9129E8005DE55C /* MLPhotoPickerBrowserPhotoImageView.m in Sources */,
