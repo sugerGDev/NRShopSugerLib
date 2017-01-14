@@ -17,6 +17,14 @@
 #import "NSString+CustomValid.h"
 #import "UILabel+CustomAdd.h"
 
+
+#import "JPVideoPlayer.h"
+#import "MSSBrowseDefine.h"
+#import "UUChart.h"
+#import "CWStarRateView.h"
+#import "KYGooeyMenu.h"
+
+
 #import "JSWave.h" //波浪
 #import "CYPasswordView.h" //密码输入框
 #import "WBPopMenuView.h" //弹窗
